@@ -1,6 +1,8 @@
 .container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
   background: #222831;
-  min-height: 100vh;
   padding: 0 0.5rem;
   display: flex;
   flex-direction: column;
@@ -14,22 +16,20 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
 }
 .cardwithsvg {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   margin-top: 3rem;
 }
 .cardwithsvg img {
-  margin: auto;
-  width: 25%;
-  height: 25%;
-  min-width: 150px;
-  min-height: 150px;
+  width: 100%;
+  height: auto;
+  max-width: 24vw;
+  max-height: 24vh;
 }
 
 .title a {
@@ -54,7 +54,6 @@
   font-size: 1.5rem;
 }
 
-
 .card {
   cursor: pointer;
   flex: 1 1;
@@ -62,10 +61,15 @@
   margin: 1rem;
   padding: 1.5rem;
   min-height: 180px;
+  min-width: 180px;
   text-align: left;
   text-decoration: none;
   border: 1px solid #eeeeee;
   border-radius: 10px;
+  width: 20vw;
+  height: 20vh;
+  max-width: 24vw;
+  max-height: 24vh;
   transition: color 0.15s ease, border-color 0.15s ease;
   box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
 }
@@ -92,36 +96,41 @@
   height: 1em;
 }
 
-@media (max-width: 720px) {
+@media (max-width: 800px) {
   .card {
     margin: 0;
     padding: 0.75rem;
-    min-height: 100px;
-    width: 95%;
-    min-width: 45vw;
+    min-height: 110px;
+    min-width: 150px;
     transition: all 400ms ease-out;
+    flex: auto;
+    max-width: 18vw;
+    max-height: 18vh;
   }
   .cardwithsvg {
     margin-top: 1rem;
-    width: 50%;
     transition: all 400ms ease-out;
     display: grid;
-    grid-template-columns: repeat(2 , 1fr);
-    grid-gap: 1vw;
-    transition: all 400ms ease-out;
-
+    justify-items: center;
+    justify-content: center;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 2.5vw;
   }
-  .card {
-    flex: auto;
+  .cardwithsvg img {
+    height: auto;
+    width: 100%;
+    transition: all 400ms ease-out;
+    max-width: 28vw;
+    max-height: 28vh;
   }
   .title {
     word-wrap: break-word;
     text-align: center;
+    font-size: 3rem;
     transition: all 400ms ease-out;
   }
   .main {
     margin-top: 0;
-    padding-top: 1rem;
     transition: all 400ms ease-out;
   }
 }
