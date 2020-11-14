@@ -1,16 +1,18 @@
 import styles from "../styles/Forum.module.css";
+import Forumnav from "../components/forumnav";
+import { motion } from "framer-motion";
 
+function Forum() {
+  return (
+    <div>
 
-function Map() {
-    return (
-        <div className={styles.container}>
+      <Forumnav  />
 
-                <h1 className={styles.title}>
-                    Welcome to <a>Forum</a>!
-                </h1>
+      <div className={styles.container}>
 
-        </div>
-    );
+      </div>
+    </div>
+  );
 }
 
-export default Map;
+export default Forum;

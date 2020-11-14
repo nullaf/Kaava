@@ -10,14 +10,27 @@
 
 .main {
   color: #eee;
-  padding: 5rem 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  flex: 1;
-}
 
+}
+.cardwithsvg {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 3rem;
+}
+.cardwithsvg img {
+  margin: auto;
+  width: 25%;
+  height: 25%;
+  min-width: 150px;
+  min-height: 150px;
+}
 
 .title a {
   color: #00adb5;
@@ -36,22 +49,14 @@
   font-size: 4rem;
 }
 
-
 .description {
   line-height: 1.5;
   font-size: 1.5rem;
 }
 
-.grid {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin-top: 3rem;
-
-}
 
 .card {
+  cursor: pointer;
   flex: 1 1;
   color: #eee;
   margin: 1rem;
@@ -62,6 +67,7 @@
   border: 1px solid #eeeeee;
   border-radius: 10px;
   transition: color 0.15s ease, border-color 0.15s ease;
+  box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
 }
 
 .card:hover,
@@ -86,12 +92,24 @@
   height: 1em;
 }
 
-@media (max-width: 600px) {
-
-  .grid {
-    margin-top: 1rem;
-    width: 100%;
+@media (max-width: 720px) {
+  .card {
+    margin: 0;
+    padding: 0.75rem;
+    min-height: 100px;
+    width: 95%;
+    min-width: 45vw;
     transition: all 400ms ease-out;
+  }
+  .cardwithsvg {
+    margin-top: 1rem;
+    width: 50%;
+    transition: all 400ms ease-out;
+    display: grid;
+    grid-template-columns: repeat(2 , 1fr);
+    grid-gap: 1vw;
+    transition: all 400ms ease-out;
+
   }
   .card {
     flex: auto;
@@ -102,6 +120,7 @@
     transition: all 400ms ease-out;
   }
   .main {
+    margin-top: 0;
     padding-top: 1rem;
     transition: all 400ms ease-out;
   }

@@ -1,0 +1,21 @@
+.background {
+    display: flex;
+    background-color: #393e46;
+    padding: 10px;
+    top: 0;
+    width: 100%;
+    height: 12%;
+    text-align: center;
+    flex-direction: row;
+    align-items: center;
+    position: sticky;
+    border-bottom:  1px solid #00adb5;
+
+}
+.logo {
+    cursor: pointer;
+    min-width: 96px;
+    min-height: 10%;
+    width: 20%;
+    transition: all 400ms ease-out;
+}
