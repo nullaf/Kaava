@@ -16,6 +16,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
 }
 .cardwithsvg {
   display: flex;
@@ -27,9 +28,7 @@
 }
 .cardwithsvg img {
   width: 100%;
-  height: auto;
-  max-width: 24vw;
-  max-height: 24vh;
+  max-width: 20vw;
 }
 
 .title a {
@@ -60,16 +59,16 @@
   color: #eee;
   margin: 1rem;
   padding: 1.5rem;
-  min-height: 180px;
-  min-width: 180px;
+  min-height: 160px;
+  min-width: 160px;
   text-align: left;
   text-decoration: none;
   border: 1px solid #eeeeee;
   border-radius: 10px;
   width: 20vw;
   height: 20vh;
-  max-width: 24vw;
-  max-height: 24vh;
+  max-width: 22vw;
+  max-height: 22vh;
   transition: color 0.15s ease, border-color 0.15s ease;
   box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
 }
@@ -100,11 +99,12 @@
   .card {
     margin: 0;
     padding: 0.75rem;
-    min-height: 110px;
-    min-width: 150px;
+    min-height: 100px;
+    min-width: 130px;
     transition: all 400ms ease-out;
     flex: auto;
-    max-width: 18vw;
+    width: 40vw;
+    max-width: 24vw;
     max-height: 18vh;
   }
   .cardwithsvg {
@@ -114,14 +114,13 @@
     justify-items: center;
     justify-content: center;
     grid-template-columns: repeat(2, 1fr);
-    grid-gap: 2.5vw;
+    grid-gap: 5vw;
+    padding: 10px;
   }
   .cardwithsvg img {
-    height: auto;
     width: 100%;
     transition: all 400ms ease-out;
-    max-width: 28vw;
-    max-height: 28vh;
+    max-width: 35vw;
   }
   .title {
     word-wrap: break-word;
@@ -129,6 +128,7 @@
     font-size: 3rem;
     transition: all 400ms ease-out;
   }
+
   .main {
     margin-top: 0;
     transition: all 400ms ease-out;
