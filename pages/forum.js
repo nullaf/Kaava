@@ -5,12 +5,9 @@ import { motion } from "framer-motion";
 function Forum() {
   return (
     <div>
+      <Forumnav />
 
-      <Forumnav  />
-
-      <div className={styles.container}>
-
-      </div>
+      <div className={styles.container}></div>
     </div>
   );
 }
