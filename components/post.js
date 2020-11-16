@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styles from "../styles/Post.module.css";
 import {
   createMuiTheme,
@@ -17,7 +17,8 @@ import { ThumbUp, ThumbUpOutlined, Comment } from "@material-ui/icons";
 import Paper from "@material-ui/core/Paper";
 import TimeAgo from "react-timeago";
 import Link from "next/link";
-import {motion} from "framer-motion";
+import Alert from "@material-ui/lab/Alert";
+import { motion } from "framer-motion";
 
 const theme = createMuiTheme({
   palette: {
@@ -42,18 +43,20 @@ export default function Post(props) {
   const classes = useStyles();
   const [like, setLike] = useState(false);
   const [likeCount, setLikeCount] = useState(parseInt(props.likeCount));
-
+  const [shareAlert, setShareAlert] = useState(false);
 
   return (
     <ThemeProvider theme={theme}>
       <Paper elevation={3} variant="outlined">
-        <motion.Card className={styles.card}
-                     whileTap={{ scale: 0.98, rotate: -1 }}
-                     animate={{
-                         scale: [0.5,1],
-                         rotate: [10, 0],
-                         transition: { duration: 0.3 },
-                     }}>
+        <motion.Card
+          className={styles.card}
+          whileTap={{ scale: 0.98, rotate: -1 }}
+          animate={{
+            scale: [0.5, 1],
+            rotate: [10, 0],
+            transition: { duration: 0.3 },
+          }}
+        >
           <CardHeader
             avatar={
               <Avatar aria-label="recipe" className={classes.avatar}>
@@ -70,7 +73,9 @@ export default function Post(props) {
               aria-label="like"
               onClick={() => {
                 setLike(!like);
-                like ? setLikeCount(likeCount-1) : setLikeCount(likeCount+1);
+                like
+                  ? setLikeCount(likeCount - 1)
+                  : setLikeCount(likeCount + 1);
               }}
             >
               {like ? (
@@ -82,23 +87,49 @@ export default function Post(props) {
                 {likeCount} Likes
               </Typography>
             </IconButton>
-<Link href={'forum/posts/' + props.id}>
-            <IconButton aria-label="comment">
-              <Comment color="primary" />
+            <Link href={"forum/posts/" + props.id}>
+              <IconButton aria-label="comment">
+                <Comment color="primary" />
 
-              <Typography variant="body2" style={{ marginLeft: "5px" }}>
-                {props.commentCount} Comments
-              </Typography>
-            </IconButton>
-</Link>
+                <Typography variant="body2" style={{ marginLeft: "5px" }}>
+                  {props.commentCount} Comments
+                </Typography>
+              </IconButton>
+            </Link>
 
-            <IconButton aria-label="share">
+            <IconButton
+              aria-label="share"
+              onClick={() => {
+                navigator.clipboard.writeText(
+                  window.location.href + "/posts/" + props.id
+                );
+                setShareAlert(true);
+                setTimeout(() => {
+                  setShareAlert(false);
+                }, 2000);
+              }}
+            >
               <ShareIcon color="primary" />
               <Typography variant="body2" style={{ marginLeft: "5px" }}>
                 Share
               </Typography>
             </IconButton>
           </CardActions>
+          {shareAlert && (
+            <motion.div
+              animate={{
+                scale: [0.5, 1, 1, 0.5],
+                rotate: [5, 0, 0, 5],
+                transition: { duration: 2 },
+              }}
+            >
+              {" "}
+              <Alert severity="success" variant="outlined">
+                {" "}
+                You successfully copied post to your clipboard!
+              </Alert>{" "}
+            </motion.div>
+          )}
         </motion.Card>
       </Paper>
     </ThemeProvider>
