@@ -32,7 +32,7 @@ function Home() {
           <Link href="/map">
             <motion.a className={styles.card} whileTap={{ scale: 0.85 }}>
 
-              <h3>Map &rarr;</h3>
+              <h3>&larr; Map</h3>
 
 
             </motion.a>
