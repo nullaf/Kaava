@@ -8,7 +8,10 @@ import useSWR from "swr";
 import fetcher from "../lib/fetch";
 import Typography from "@material-ui/core/Typography";
 
+
 function Forum() {
+
+  const [searchValue, setSearchValue] = useState("");
   const [isLoginClicked, setLoginClicked] = useState(false);
   const [isSignupClicked, setSignupClicked] = useState(false);
 
@@ -20,7 +23,7 @@ function Forum() {
         <title>Forum</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Forumnav loginStatus={setLoginClicked} signupStatus={setSignupClicked} />
+      <Forumnav loginStatus={setLoginClicked} signupStatus={setSignupClicked} searchValue={searchValue} setSearchValue={setSearchValue}/>
 
       <div className={styles.container}>
         <LoginModal
@@ -30,9 +33,11 @@ function Forum() {
           setLoginClicked={setLoginClicked}
         />
         <div className={styles.postContainer}>
-        {!data && <Typography variant="h2">Loading</Typography>}
+
+                {!data && <Typography variant="h2">Loading</Typography>}
         {data?.posts.post.map((post) => {
           return (
+              post.title.toLowerCase().includes(searchValue.toLowerCase()) && (
             <Post
               key={post.id}
               id ={post.id}
@@ -41,8 +46,9 @@ function Forum() {
               commentCount={post.commentCount}
               date={post.date}
             />
-          );
+              ));
         })}
+
         </div>
       </div>
     </div>

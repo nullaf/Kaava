@@ -5,7 +5,6 @@ import {
   makeStyles,
   ThemeProvider,
 } from "@material-ui/core/styles";
-import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
 import CardContent from "@material-ui/core/CardContent";
 import CardActions from "@material-ui/core/CardActions";
@@ -18,6 +17,7 @@ import { ThumbUp, ThumbUpOutlined, Comment } from "@material-ui/icons";
 import Paper from "@material-ui/core/Paper";
 import TimeAgo from "react-timeago";
 import Link from "next/link";
+import {motion} from "framer-motion";
 
 const theme = createMuiTheme({
   palette: {
@@ -41,11 +41,19 @@ const useStyles = makeStyles((theme) => ({
 export default function Post(props) {
   const classes = useStyles();
   const [like, setLike] = useState(false);
-  
+  const [likeCount, setLikeCount] = useState(parseInt(props.likeCount));
+
+
   return (
     <ThemeProvider theme={theme}>
       <Paper elevation={3} variant="outlined">
-        <Card className={styles.card}>
+        <motion.Card className={styles.card}
+                     whileTap={{ scale: 0.98, rotate: -1 }}
+                     animate={{
+                         scale: [0.5,1],
+                         rotate: [10, 0],
+                         transition: { duration: 0.3 },
+                     }}>
           <CardHeader
             avatar={
               <Avatar aria-label="recipe" className={classes.avatar}>
@@ -62,6 +70,7 @@ export default function Post(props) {
               aria-label="like"
               onClick={() => {
                 setLike(!like);
+                like ? setLikeCount(likeCount-1) : setLikeCount(likeCount+1);
               }}
             >
               {like ? (
@@ -70,7 +79,7 @@ export default function Post(props) {
                 <ThumbUpOutlined color="primary" />
               )}
               <Typography variant="body2" style={{ marginLeft: "5px" }}>
-                {props.likeCount} Likes
+                {likeCount} Likes
               </Typography>
             </IconButton>
 <Link href={'forum/posts/' + props.id}>
@@ -90,7 +99,7 @@ export default function Post(props) {
               </Typography>
             </IconButton>
           </CardActions>
-        </Card>
+        </motion.Card>
       </Paper>
     </ThemeProvider>
   );

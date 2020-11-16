@@ -6,7 +6,7 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import Link from "next/link";
 import InputAdornment from "@material-ui/core/InputAdornment";
-import { useState } from "react";
+
 
 const theme = createMuiTheme({
   palette: {
@@ -18,8 +18,6 @@ const theme = createMuiTheme({
 });
 
 function Forumnav(props) {
-  const [searchValue, setSearchValue] = useState("");
-
 
 
   return (
@@ -33,8 +31,8 @@ function Forumnav(props) {
         <div className={styles.search}>
           <TextField
             fullWidth
-            value={searchValue}
-            onChange={(e) => setSearchValue(e.target.value)}
+            value={props.searchValue}
+            onChange={(e) => props.setSearchValue(e.target.value)}
             variant="filled"
             color="primary"
             label="Search"
