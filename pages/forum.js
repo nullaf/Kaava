@@ -1,49 +1,47 @@
 import styles from "../styles/Forum.module.css";
 import Forumnav from "../components/forumnav";
 import React, { useState } from "react";
-import Login from "../components/login";
-import Signup from "../components/signup";
-import Backdrop from "@material-ui/core/Backdrop";
-import Modal from "@material-ui/core/Modal";
-import Fade from "@material-ui/core/Fade";
+import LoginModal from "../components/loginModal";
+import Post from "../components/post";
+import Head from "next/head";
+import useSWR from "swr";
+import fetcher from "../lib/fetch";
+import Typography from "@material-ui/core/Typography";
 
 function Forum() {
   const [isLoginClicked, setLoginClicked] = useState(false);
   const [isSignupClicked, setSignupClicked] = useState(false);
 
-  const handleClose = () => {
-    setLoginClicked(false);
-    setSignupClicked(false);
-  };
+  const { data, error } = useSWR("/api/dummyposts", fetcher);
 
   return (
-    <div >
+    <div>
+      <Head>
+        <title>Forum</title>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       <Forumnav loginStatus={setLoginClicked} signupStatus={setSignupClicked} />
 
-        <div className={styles.container}>
-        <Modal
-          aria-labelledby="transition-modal-title"
-          aria-describedby="transition-modal-description"
-          open={isSignupClicked || isLoginClicked}
-          onClose={handleClose}
-          closeAfterTransition
-          BackdropComponent={Backdrop}
-          BackdropProps={{
-            timeout: 500,
-          }}
-        >
-          <Fade in={isSignupClicked || isLoginClicked}>
-              <div
-                  className={
-                      isLoginClicked || isSignupClicked ? styles.login : styles.default
-                  }
-              > {isLoginClicked && <Login />}
-
-            {isSignupClicked && <Signup />}
-              </div>
-          </Fade>
-        </Modal>
-       </div>
+      <div className={styles.container}>
+        <LoginModal
+          isLoginClicked={isLoginClicked}
+          isSignupClicked={isSignupClicked}
+          setSignupClicked={setSignupClicked}
+          setLoginClicked={setLoginClicked}
+        />
+        {!data && <Typography variant="h2">Loading</Typography>}
+        {data?.posts.post.map((post) => {
+          return (
+            <Post
+              key={post.id}
+              title={post.title}
+              likeCount={post.likeCount}
+              commentCount={post.commentCount}
+              date={post.date}
+            />
+          );
+        })}
+      </div>
     </div>
   );
 }

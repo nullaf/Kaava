@@ -64,7 +64,7 @@ export default function Login() {
           <Typography component="h1" variant="h5">
             Login
           </Typography>
-          <div className={classes.form} noValidate>
+          <div className={classes.form}>
             <TextField
               variant="outlined"
               margin="normal"

@@ -19,6 +19,7 @@
 
 }
 .cardwithsvg {
+  cursor: pointer;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -43,6 +44,7 @@
 }
 
 .title {
+  user-select: none;
   margin: 0;
   line-height: 1.15;
   font-size: 4rem;
@@ -54,6 +56,7 @@
 }
 
 .card {
+  display: flex;
   cursor: pointer;
   flex: 1 1;
   color: #eee;
@@ -61,7 +64,6 @@
   padding: 1.5rem;
   min-height: 160px;
   min-width: 160px;
-  text-align: left;
   text-decoration: none;
   border: 1px solid #eeeeee;
   border-radius: 10px;
@@ -89,6 +91,11 @@
   margin: 0;
   font-size: 1.25rem;
   line-height: 1.5;
+}
+.card:last-of-type{
+  display: flex;
+  text-align: right;
+  justify-content: flex-end;
 }
 
 .logo {
