@@ -1,4 +1,5 @@
 .card {
+    margin: 15px;
     background: #393e46 !important;
     display: flex;
     flex-direction: column;
@@ -6,5 +7,11 @@
     align-items: flex-start;
     width: 50vw;
     text-align: left;
-    padding: 15px;
+    padding: 5px;
+}
+
+@media (max-width: 800px) {
+    .card {
+        width: 90vw;
+    }
 }

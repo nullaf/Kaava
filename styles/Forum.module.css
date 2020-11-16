@@ -9,6 +9,10 @@
   align-items: center;
   text-align: center;
 }
+.postContainer {
+  display: grid;
+  grid-gap: 30px;
+}
 .container .login {
   background: #eee;
   display: inline-block;

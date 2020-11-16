@@ -29,6 +29,7 @@ function Forum() {
           setSignupClicked={setSignupClicked}
           setLoginClicked={setLoginClicked}
         />
+        <div className={styles.postContainer}>
         {!data && <Typography variant="h2">Loading</Typography>}
         {data?.posts.post.map((post) => {
           return (
@@ -41,6 +42,7 @@ function Forum() {
             />
           );
         })}
+        </div>
       </div>
     </div>
   );
