@@ -27,7 +27,7 @@ function Forumnav(props) {
       <div className={styles.background}>
         <div className={styles.logo}>
           <Link href="./">
-            <img src="./svgs/icon.svg" />
+            <img src="/svgs/icon.svg"/>
           </Link>
         </div>
         <div className={styles.search}>

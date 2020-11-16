@@ -5,13 +5,13 @@
   padding: 0 0.5rem;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   text-align: center;
 }
 .postContainer {
   display: grid;
   grid-gap: 30px;
+  z-index: 0;
 }
 .container .login {
   background: #eee;

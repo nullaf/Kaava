@@ -14,6 +14,7 @@
   flex-wrap: nowrap;
   min-height: 80px;
   justify-content: space-between;
+  z-index: 1;
 }
 .logo {
   cursor: pointer;
