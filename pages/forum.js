@@ -35,6 +35,7 @@ function Forum() {
           return (
             <Post
               key={post.id}
+              id ={post.id}
               title={post.title}
               likeCount={post.likeCount}
               commentCount={post.commentCount}

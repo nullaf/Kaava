@@ -26,7 +26,7 @@ function Forumnav(props) {
     <ThemeProvider theme={theme}>
       <div className={styles.background}>
         <div className={styles.logo}>
-          <Link href="./">
+          <Link href="/">
             <img src="/svgs/icon.svg"/>
           </Link>
         </div>

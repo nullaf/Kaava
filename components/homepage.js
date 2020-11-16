@@ -16,7 +16,10 @@ const Homepage = () => {
         <Link href="/map">
           <motion.img
             src="./svgs/SvgMap.svg"
-            style={{ marginBottom: "1.5%" }}
+            style={{ marginBottom: "2%" }}
+            width="640"
+            height="360"
+            alt="Image of map with markers on it."
             whileHover={{ scale: 0.95, rotate: -1 }}
             whileTap={{ scale: 0.85, rotate: -10 }}
             animate={{
@@ -27,20 +30,23 @@ const Homepage = () => {
         </Link>
 
         <Link href="/map">
-          <motion.a className={styles.card} whileTap={{ scale: 0.85 }}>
-            <h3>&larr; Map</h3>
+          <motion.a className={styles.card} whileTap={{ scale: 0.85 }} href="/map">
+            <h2>&larr; Map</h2>
 
           </motion.a>
         </Link>
         <Link href="/forum">
-          <motion.a className={styles.card} whileTap={{ scale: 0.85 }}>
-            <h3 className="forumCard">Forum &rarr;</h3>
+          <motion.a className={styles.card} whileTap={{ scale: 0.85 }} href="/forum">
+            <h2 className="forumCard">Forum &rarr;</h2>
           </motion.a>
         </Link>
         <Link href="/forum">
           <motion.img
             src="./svgs/SvgSocial.svg"
             style={{ marginBottom: "0%" }}
+            width="640"
+            height="360"
+            alt="Image of social media and animals."
             whileHover={{ scale: 0.95, rotate: 1 }}
             whileTap={{ scale: 0.85, rotate: 10 }}
             animate={{

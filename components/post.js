@@ -41,7 +41,7 @@ const useStyles = makeStyles((theme) => ({
 export default function Post(props) {
   const classes = useStyles();
   const [like, setLike] = useState(false);
-
+  
   return (
     <ThemeProvider theme={theme}>
       <Paper elevation={3} variant="outlined">
@@ -73,7 +73,7 @@ export default function Post(props) {
                 {props.likeCount} Likes
               </Typography>
             </IconButton>
-
+<Link href={'forum/posts/' + props.id}>
             <IconButton aria-label="comment">
               <Comment color="primary" />
 
@@ -81,6 +81,7 @@ export default function Post(props) {
                 {props.commentCount} Comments
               </Typography>
             </IconButton>
+</Link>
 
             <IconButton aria-label="share">
               <ShareIcon color="primary" />

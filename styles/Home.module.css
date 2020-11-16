@@ -30,6 +30,7 @@
 .cardwithsvg img {
   width: 100%;
   max-width: 20vw;
+  max-height: 35vh;
 }
 
 .title a {
@@ -82,7 +83,7 @@
   border-color: #00adb5;
 }
 
-.card h3 {
+.card h2 {
   margin: 0 0 1rem 0;
   font-size: 1.5rem;
 }
