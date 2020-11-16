@@ -1,10 +1,31 @@
 .container {
-    color: #eee;
-    background: #222831;
-    min-height: 100vh;
-    padding: 0 0.5rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  color: #eee;
+  background: #222831;
+  min-height: 100vh;
+  padding: 0 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
+.container .login {
+  background: #eee;
+  display: inline-block;
+  width: 50vw;
+  height: 50vh;
+  transition: all 400ms ease-out;
+
+}
+.login {
+  display: flex;
+  border-bottom: 1px solid #00adb5;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  transition: all 400ms ease-out;
+}
+.default {
+  display: none;
+}
+

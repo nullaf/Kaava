@@ -6,7 +6,6 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import Link from "next/link";
 import InputAdornment from "@material-ui/core/InputAdornment";
-import ClickAwayListener from "@material-ui/core/ClickAwayListener";
 import { useState } from "react";
 
 const theme = createMuiTheme({
@@ -18,8 +17,10 @@ const theme = createMuiTheme({
   },
 });
 
-function Forumnav() {
+function Forumnav(props) {
   const [searchValue, setSearchValue] = useState("");
+
+
 
   return (
     <ThemeProvider theme={theme}>
@@ -47,7 +48,14 @@ function Forumnav() {
           />
         </div>
         <div className={styles.buttons}>
-          <Button variant="outlined" size="large" fullwidth>
+          <Button
+            variant="outlined"
+            size="large"
+            fullwidth
+            onClick={() => {
+              props.loginStatus(true);
+            }}
+          >
             Log In
           </Button>
           <Button
@@ -55,6 +63,9 @@ function Forumnav() {
             size="large"
             style={{ marginLeft: "1vw" }}
             fullwidth
+            onClick={() => {
+              props.signupStatus(true);
+            }}
           >
             Sign Up
           </Button>
