@@ -1,6 +1,6 @@
 import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
-import styles from "../styles/Forum.module.css";
+import styles from "../styles/loginModal.module.css";
 import Login from "./login";
 import Signup from "./signup";
 import Modal from "@material-ui/core/Modal";
@@ -14,6 +14,7 @@ const LoginModal = ({setLoginClicked,setSignupClicked,isLoginClicked,isSignupCli
     };
 
     return(<Modal
+        className={styles.loginmodal}
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
         open={isSignupClicked || isLoginClicked}
@@ -21,7 +22,7 @@ const LoginModal = ({setLoginClicked,setSignupClicked,isLoginClicked,isSignupCli
         closeAfterTransition
         BackdropComponent={Backdrop}
         BackdropProps={{
-            timeout: 500,
+            timeout: 600,
         }}
     >
         <Fade in={isSignupClicked || isLoginClicked}>

@@ -21,6 +21,9 @@ const theme = createMuiTheme({
     primary: {
       main: "#00adb5",
     },
+    secondary: {
+      main: "#eeeeee"
+    }
   },
 });
 
@@ -61,7 +64,7 @@ export default function Login() {
           <Avatar className={classes.avatar}>
             <LockOutlinedIcon />
           </Avatar>
-          <Typography component="h1" variant="h5">
+          <Typography component="h1" variant="h5" color="secondary">
             Login
           </Typography>
           <div className={classes.form}>

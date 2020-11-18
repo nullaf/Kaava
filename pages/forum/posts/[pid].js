@@ -25,6 +25,7 @@ const theme = createMuiTheme({
 function Pid() {
   const { data, error } = useSWR("/api/dummyposts", fetcher);
 
+
   const router = useRouter();
   const { pid } = router.query;
 

@@ -101,7 +101,7 @@ export default function Post(props) {
               aria-label="share"
               onClick={() => {
                 navigator.clipboard.writeText(
-                  window.location.href + "/posts/" + props.id
+                  window.location.href.includes("posts") ? window.location.href :window.location.href + "/posts/" + props.id
                 );
                 setShareAlert(true);
                 setTimeout(() => {

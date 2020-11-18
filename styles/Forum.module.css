@@ -21,15 +21,5 @@
   transition: all 400ms ease-out;
 
 }
-.login {
-  display: flex;
-  border-bottom: 1px solid #00adb5;
-  justify-content: center;
-  text-align: center;
-  align-items: center;
-  transition: all 400ms ease-out;
-}
-.default {
-  display: none;
-}
+
 

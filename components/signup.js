@@ -30,6 +30,9 @@ const theme = createMuiTheme({
     primary: {
       main: "#00adb5",
     },
+    secondary: {
+      main: "#eeeeee"
+    }
   },
 });
 const useStyles = makeStyles((theme) => ({
@@ -89,7 +92,7 @@ export default function Login() {
           <Avatar className={classes.avatar}>
             <LockOutlined />
           </Avatar>
-          <Typography component="h1" variant="h5">
+          <Typography component="h1" variant="h5" color="secondary">
             Sign Up
           </Typography>
           <div className={classes.form}>
