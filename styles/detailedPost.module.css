@@ -1,0 +1,17 @@
+.card {
+    margin: 10px;
+    background: #393e46 !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    width: 50vw;
+    text-align: left;
+    padding: 5px;
+}
+
+@media (max-width: 800px) {
+    .card {
+        width: 90vw;
+    }
+}
