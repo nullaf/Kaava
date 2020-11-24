@@ -5,7 +5,7 @@ export default (req, res) => {
       post: [
         {
           id: "6",
-          title: "Love this website :)",
+          title: "Consectetur adipiscing elit",
           content:
             "Sed pulvinar proin gravida hendrerit. In vitae turpis massa sed elementum tempus egestas. Arcu odio ut sem nulla pharetra. Vel elit scelerisque mauris pellentesque pulvinar pellentesque habitant.",
           likeCount: "1",
@@ -14,7 +14,7 @@ export default (req, res) => {
         },
         {
           id: "5",
-          title: "I love kaava",
+          title: "Euismod in pellentesque massa placerat duis ultricies",
           content:
             "Amet est placerat in egestas erat imperdiet sed euismod. Congue mauris rhoncus aenean vel elit scelerisque mauris pellentesque pulvinar.",
           likeCount: "2",
@@ -23,7 +23,7 @@ export default (req, res) => {
         },
         {
           id: "4",
-          title: "Which food do you prefer for your dog",
+          title: "Magna sit amet purus gravida quis blandit turpis",
           content:
             "Et pharetra pharetra massa massa ultricies mi quis. Fermentum posuere urna nec tincidunt praesent semper feugiat nibh sed.",
           likeCount: "5",
@@ -32,7 +32,7 @@ export default (req, res) => {
         },
         {
           id: "3",
-          title: "I need help for my pet",
+          title: "Viverra ipsum nunc aliquet bibendum enim",
           content:
             "Malesuada pellentesque elit eget gravida. Sem et tortor consequat id. Odio euismod lacinia at quis risus sed vulputate. Non arcu risus quis varius quam quisque id diam.",
           likeCount: "0",
@@ -41,7 +41,7 @@ export default (req, res) => {
         },
         {
           id: "2",
-          title: "I love my cat",
+          title: "Libero id faucibus nisl tincidunt eget nullam",
           content:
             "A pellentesque sit amet porttitor eget dolor morbi. A pellentesque sit amet porttitor eget dolor morbi. Elementum nibh tellus molestie nunc non blandit massa. Lacus luctus accumsan tortor posuere. Odio ut sem nulla pharetra diam sit amet nisl. Commodo nulla facilisi nullam vehicula ipsum a.",
           likeCount: "2",
