@@ -3,13 +3,10 @@
     justify-content: center;
     text-align: center;
     align-items: center;
-    transition: all 400ms ease-out;
 }
 .default {
     display: none;
-    transition: all 400ms ease-out;
 }
 .loginmodal {
-    background: #222831 ;
-    transition: all 400ms ease-out;
+    background: #222831;
 }

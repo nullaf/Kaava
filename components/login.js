@@ -69,7 +69,7 @@ export default function Login() {
           </Typography>
           <div className={classes.form}>
             <TextField
-              variant="outlined"
+              variant="filled"
               margin="normal"
               required
               fullWidth
@@ -92,7 +92,7 @@ export default function Login() {
               }}
             />
             <TextField
-              variant="outlined"
+              variant="filled"
               margin="normal"
               required
               fullWidth

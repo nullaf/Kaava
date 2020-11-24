@@ -22,7 +22,7 @@ const LoginModal = ({setLoginClicked,setSignupClicked,isLoginClicked,isSignupCli
         closeAfterTransition
         BackdropComponent={Backdrop}
         BackdropProps={{
-            timeout: 600,
+            timeout: 400,
         }}
     >
         <Fade in={isSignupClicked || isLoginClicked}>

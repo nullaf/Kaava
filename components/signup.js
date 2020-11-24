@@ -97,7 +97,7 @@ export default function Login() {
           </Typography>
           <div className={classes.form}>
             <TextField
-              variant="outlined"
+              variant="filled"
               margin="normal"
               required
               fullWidth
@@ -134,7 +134,7 @@ export default function Login() {
             <TextField
               value={username}
               onChange={(e) => setUsername(e.target.value)}
-              variant="outlined"
+              variant="filled"
               margin="normal"
               required
               fullWidth
@@ -163,7 +163,7 @@ export default function Login() {
                   : "Your passwords aren't matching."
               }
               error={isPassMatch || !password.length ? 0 : 1}
-              variant="outlined"
+              variant="filled"
               margin="normal"
               type={showPass ? "text" : "password"}
               required
@@ -209,7 +209,7 @@ export default function Login() {
                   : "Your passwords aren't matching."
               }
               error={isPassMatch || !password.length ? 0 : 1}
-              variant="outlined"
+              variant="filled"
               margin="normal"
               required
               fullWidth
