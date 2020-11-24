@@ -1,17 +1,20 @@
 .card {
-    margin: 10px;
-    background: #393e46 !important;
+    margin: 8px;
+    background: #393e46;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    width: 50vw;
+    width: 40vw;
     text-align: left;
     padding: 5px;
+    box-shadow: 2px 2px 5px 1px rgba(0,0,0,0.75);
 }
 
 @media (max-width: 800px) {
     .card {
-        width: 90vw;
+        width: 94vw;
+        margin: 3px;
+        padding: 3px;
     }
 }
