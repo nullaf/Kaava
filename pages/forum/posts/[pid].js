@@ -49,6 +49,7 @@ function Pid() {
                   <DetailedPost
                     key={post.id}
                     title={post.title}
+                    content={post.content}
                     likeCount={post.likeCount}
                     commentCount={post.commentCount}
                     date={post.date}

@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import styles from "../styles/detailedPost.module.css";
 import {
-  createMuiTheme,
-  makeStyles,
   ThemeProvider,
 } from "@material-ui/core/styles";
 import CardHeader from "@material-ui/core/CardHeader";
@@ -11,46 +9,30 @@ import CardActions from "@material-ui/core/CardActions";
 import Avatar from "@material-ui/core/Avatar";
 import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
-import { red } from "@material-ui/core/colors";
 import ShareIcon from "@material-ui/icons/Share";
 import { ThumbUp, ThumbUpOutlined, Comment } from "@material-ui/icons";
 import Paper from "@material-ui/core/Paper";
 import TimeAgo from "react-timeago";
-import Link from "next/link";
 import Alert from "@material-ui/lab/Alert";
 import { motion } from "framer-motion";
+import theme from "./muiThemes/postMuiTheme";
 
-const theme = createMuiTheme({
-  palette: {
-    type: "dark",
-    primary: {
-      main: "#00adb5",
-    },
-  },
-});
-
-const useStyles = makeStyles((theme) => ({
-  media: {
-    height: 0,
-    paddingTop: "56.25%", // 16:9
-  },
-  avatar: {
-    backgroundColor: red[500],
-  },
-}));
 
 export default function detailedPost(props) {
-  const classes = useStyles();
   const [like, setLike] = useState(false);
   const [likeCount, setLikeCount] = useState(parseInt(props.likeCount));
   const [shareAlert, setShareAlert] = useState(false);
 
   return (
     <ThemeProvider theme={theme}>
-      <Paper elevation={3} variant="outlined">
+      <Paper
+          elevation={3}
+          variant="outlined"
+          style={{ backgroundColor: "#393E46" }}
+      >
         <motion.Card
           className={styles.card}
-          whileTap={{ scale: 0.98, rotate: -1 }}
+          whileTap={{ scale: 0.97 }}
           animate={{
             scale: [0.5, 1],
             rotate: [10, 0],
@@ -59,15 +41,21 @@ export default function detailedPost(props) {
         >
           <CardHeader
             avatar={
-              <Avatar aria-label="recipe" className={classes.avatar}>
-                R
+              <Avatar aria-label="recipe" style={{backgroundColor:"#ff2e63"}}>
+                  {props.title[0]}
               </Avatar>
             }
             title={props.title}
+            titleTypographyProps={{ variant: "h6" }}
             subheader={<TimeAgo date={props.date} />}
           />
 
-          <CardContent></CardContent>
+            <CardContent>
+                {" "}
+                <Typography variant="body1">
+                    {props.content}
+                </Typography>{" "}
+            </CardContent>
           <CardActions disableSpacing>
             <IconButton
               aria-label="like"
