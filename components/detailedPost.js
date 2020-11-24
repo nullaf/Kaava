@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import styles from "../styles/detailedPost.module.css";
-import {
-  ThemeProvider,
-} from "@material-ui/core/styles";
+import { ThemeProvider } from "@material-ui/core/styles";
 import CardHeader from "@material-ui/core/CardHeader";
 import CardContent from "@material-ui/core/CardContent";
 import CardActions from "@material-ui/core/CardActions";
@@ -19,6 +17,8 @@ import theme from "./muiThemes/postMuiTheme";
 
 
 export default function detailedPost(props) {
+
+
   const [like, setLike] = useState(false);
   const [likeCount, setLikeCount] = useState(parseInt(props.likeCount));
   const [shareAlert, setShareAlert] = useState(false);
@@ -26,9 +26,9 @@ export default function detailedPost(props) {
   return (
     <ThemeProvider theme={theme}>
       <Paper
-          elevation={3}
-          variant="outlined"
-          style={{ backgroundColor: "#393E46" }}
+        elevation={3}
+        variant="outlined"
+        style={{ backgroundColor: "#393E46" }}
       >
         <motion.Card
           className={styles.card}
@@ -41,8 +41,11 @@ export default function detailedPost(props) {
         >
           <CardHeader
             avatar={
-              <Avatar aria-label="recipe" style={{backgroundColor:"#ff2e63"}}>
-                  {props.title[0]}
+              <Avatar
+                aria-label="recipe"
+                style={{ backgroundColor: "#ff2e63" }}
+              >
+                {props.title[0]}
               </Avatar>
             }
             title={props.title}
@@ -50,12 +53,10 @@ export default function detailedPost(props) {
             subheader={<TimeAgo date={props.date} />}
           />
 
-            <CardContent>
-                {" "}
-                <Typography variant="body1">
-                    {props.content}
-                </Typography>{" "}
-            </CardContent>
+          <CardContent>
+            {" "}
+            <Typography variant="body1">{props.content}</Typography>{" "}
+          </CardContent>
           <CardActions disableSpacing>
             <IconButton
               aria-label="like"
