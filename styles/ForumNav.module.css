@@ -18,7 +18,7 @@
 }
 .logo {
   cursor: pointer;
-  min-width: 75px;
+  min-width: 85px;
   width: 20vw;
   transition: all 400ms ease-out;
 }
@@ -38,10 +38,15 @@
     margin-left: 6vw;
     min-width: 100px;
     justify-content: flex-end;
+
   }
   .search {
     margin: 0;
     min-width: 30px;
-    width: 20vw;
+    width: 32vw;
+
+  }
+  .logo {
+    width: 25vw;
   }
 }
