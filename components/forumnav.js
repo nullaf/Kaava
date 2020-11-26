@@ -6,7 +6,7 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import Link from "next/link";
 import InputAdornment from "@material-ui/core/InputAdornment";
-
+import { useRouter } from "next/router";
 
 const theme = createMuiTheme({
   palette: {
@@ -18,19 +18,17 @@ const theme = createMuiTheme({
 });
 
 function Forumnav(props) {
-
+  const router = useRouter();
 
   return (
     <ThemeProvider theme={theme}>
       <div className={styles.background}>
-        <div className={styles.logo}>
-          <Link href="/">
-            <img src="/svgs/icon.svg"/>
-          </Link>
+        <div className={styles.logo} onClick={() => router.back()}>
+          <img src="/svgs/icon.svg" />
         </div>
         <div className={styles.search}>
           <TextField
-            fullWidth
+              fullWidth
             value={props.searchValue}
             onChange={(e) => props.setSearchValue(e.target.value)}
             variant="filled"
@@ -49,7 +47,7 @@ function Forumnav(props) {
           <Button
             variant="outlined"
             size="large"
-            fullwidth
+            fullWidth
             onClick={() => {
               props.loginStatus(true);
             }}
@@ -60,7 +58,7 @@ function Forumnav(props) {
             variant="contained"
             size="large"
             style={{ marginLeft: "1vw" }}
-            fullwidth
+            fullWidth
             onClick={() => {
               props.signupStatus(true);
             }}

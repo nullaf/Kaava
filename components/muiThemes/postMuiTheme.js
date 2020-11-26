@@ -11,6 +11,7 @@ const theme = createMuiTheme({
         MuiPaper: {
             root: {
                 color: "#eee",
+                backgroundColor: "#393e46",
             },
         },
     },

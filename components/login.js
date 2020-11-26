@@ -137,9 +137,9 @@ export default function Login() {
               variant="contained"
               color="primary"
               className={classes.submit}
-              disabled={!(password.length > 0 && email.length > 0)}
+              disabled={1 || !(password.length > 0 && email.length > 0)}
             >
-              Login
+              Under Construction
             </Button>
           </div>
         </div>

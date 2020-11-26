@@ -38,14 +38,15 @@ function Forum() {
         <div className={styles.postContainer}>
           {!data && <Typography variant="h2">Loading</Typography>}
 
-          {data?.posts.post.map((post) => {
+
+          {data?.forum.posts.map((post) => {
             return (
               post.title.toLowerCase().includes(searchValue.toLowerCase()) && (
                 <Post
                   key={post.id}
                   id={post.id}
                   title={post.title}
-                  content={post.content.slice(0, 100) + "..."}
+                  content={post.content}
                   likeCount={post.likeCount}
                   commentCount={post.commentCount}
                   date={post.date}

@@ -24,6 +24,7 @@ const theme = createMuiTheme({
 function Pid() {
   const { data, error } = useSWR("/api/dummyposts", fetcher);
 
+
   const router = useRouter();
   const { pid } = router.query;
 
@@ -43,7 +44,7 @@ function Pid() {
 
           <div className={styles.postContainer}>
             {!data && <Typography variant="h2">Loading</Typography>}
-            {data?.posts.post.map((post) => {
+            {data?.forum.posts.map((post) => {
               return (
                 post.id === pid && (
                   <DetailedPost

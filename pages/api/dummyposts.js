@@ -1,8 +1,8 @@
 export default (req, res) => {
   res.statusCode = 200;
   res.json({
-    posts: {
-      post: [
+    forum: {
+      posts: [
         {
           id: "6",
           title: "Consectetur adipiscing elit",
@@ -16,7 +16,7 @@ export default (req, res) => {
           id: "5",
           title: "Euismod in pellentesque massa placerat duis ultricies",
           content:
-            "Amet est placerat in egestas erat imperdiet sed euismod. Congue mauris rhoncus aenean vel elit scelerisque mauris pellentesque pulvinar.",
+            "Amet est placerat in egestas erat imperdiet sed euismod. Congue mauris rhoncus aenean vel elit scelerisque mauris pellentesque pulvinar. Non tellus orci ac auctor augue. Scelerisque varius morbi enim nunc faucibus a pellentesque.",
           likeCount: "2",
           commentCount: "0",
           date: "Mon Nov 10 2020 11:57:16 GMT+0300 (GMT+03:00)",
@@ -25,7 +25,7 @@ export default (req, res) => {
           id: "4",
           title: "Magna sit amet purus gravida quis blandit turpis",
           content:
-            "Et pharetra pharetra massa massa ultricies mi quis. Fermentum posuere urna nec tincidunt praesent semper feugiat nibh sed.",
+            "Et pharetra pharetra massa massa ultricies mi quis. Fermentum posuere urna nec tincidunt praesent semper feugiat nibh sed. Scelerisque in dictum non consectetur a erat nam. Gravida arcu ac tortor dignissim convallis.",
           likeCount: "5",
           commentCount: "1",
           date: "Mon Nov 6 2020 07:57:16 GMT+0300 (GMT+03:00)",
@@ -34,7 +34,7 @@ export default (req, res) => {
           id: "3",
           title: "Viverra ipsum nunc aliquet bibendum enim",
           content:
-            "Malesuada pellentesque elit eget gravida. Sem et tortor consequat id. Odio euismod lacinia at quis risus sed vulputate. Non arcu risus quis varius quam quisque id diam.",
+            "Malesuada pellentesque elit eget gravida. Sem et tortor consequat id. Odio euismod lacinia at quis risus sed vulputate. Non arcu risus quis varius quam quisque id diam. Faucibus nisl tincidunt eget nullam non.",
           likeCount: "0",
           commentCount: "0",
           date: "Mon Nov 1 2020 09:57:16 GMT+0300 (GMT+03:00)",

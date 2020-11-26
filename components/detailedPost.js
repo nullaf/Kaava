@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styles from "../styles/detailedPost.module.css";
+import styles from "../styles/Post.module.css";
 import { ThemeProvider } from "@material-ui/core/styles";
 import CardHeader from "@material-ui/core/CardHeader";
 import CardContent from "@material-ui/core/CardContent";
