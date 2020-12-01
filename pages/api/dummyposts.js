@@ -48,6 +48,15 @@ export default (req, res) => {
           commentCount: "0",
           date: "Mon Nov 1 2020 11:57:16 GMT+0300 (GMT+03:00)",
         },
+        {
+          id: "1",
+          title: "Orci eu lobortis elementum nibh tellus molestie nunc non",
+          content:
+              "Morbi tincidunt augue interdum velit euismod in pellentesque massa. Molestie nunc non blandit massa enim. Pharetra convallis posuere morbi leo urna molestie at elementum eu. Scelerisque mauris pellentesque pulvinar pellentesque habitant morbi tristique senectus et.",
+          likeCount: "1",
+          commentCount: "0",
+          date: "Mon Nov 1 2020 8:57:16 GMT+0300 (GMT+03:00)",
+        },
       ],
     },
   });

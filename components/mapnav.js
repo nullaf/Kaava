@@ -3,7 +3,7 @@ import styles from "../styles/ForumNav.module.css";
 import { createMuiTheme } from "@material-ui/core/styles";
 import { ThemeProvider } from "@material-ui/styles";
 import Link from "next/link";
-import { useRouter } from "next/router";
+
 
 const theme = createMuiTheme({
   palette: {
@@ -14,13 +14,14 @@ const theme = createMuiTheme({
 });
 
 function Mapnav() {
-  const router = useRouter();
   return (
     <ThemeProvider theme={theme}>
       <div className={styles.background}>
-        <div className={styles.logo} onClick={() => router.back()}>
+        <Link href="/">
+        <div className={styles.logo}>
           <img src="./svgs/icon.svg" />
         </div>
+        </Link>
       </div>
     </ThemeProvider>
   );

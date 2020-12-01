@@ -9,8 +9,7 @@ import { useRouter } from "next/router";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import IconButton from "@material-ui/core/IconButton";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
-
-
+import Link from "next/link";
 
 const theme = createMuiTheme({
   palette: {
@@ -24,7 +23,6 @@ const theme = createMuiTheme({
 function Pid() {
   const { data, error } = useSWR("/api/dummyposts", fetcher);
 
-
   const router = useRouter();
   const { pid } = router.query;
 
@@ -37,10 +35,11 @@ function Pid() {
         </Head>
 
         <div className={styles.container}>
-
-            <IconButton aria-label="back" onClick={() => router.back()}>
+          <Link href="/forum" >
+            <IconButton aria-label="back">
               <ArrowBackIcon color="primary" fontSize="large" />
             </IconButton>
+          </Link>
 
           <div className={styles.postContainer}>
             {!data && <Typography variant="h2">Loading</Typography>}
