@@ -48,7 +48,7 @@ function Forum() {
                   title={post.title}
                   content={post.content}
                   likeCount={post.likeCount}
-                  commentCount={post.commentCount}
+                  comments={post.comments}
                   date={post.date}
                 />
               )

@@ -1,4 +1,10 @@
-.card {
+.addComment {
+    margin: 4px;
+    padding: 5px;
+    background: #393e46;
+}
+
+.comment {
     margin: 8px;
     background: #393e46;
     display: flex;
@@ -7,14 +13,18 @@
     align-items: flex-start;
     width: 40vw;
     text-align: left;
-    padding: 5px;
-
+    padding: 10px;
 }
 
 @media (max-width: 800px) {
-    .card {
+    .addComment {
+        margin: 2px;
+        padding: 2px;
+    }
+    .comment {
         width: 94vw;
         margin: 3px;
-        padding: 3px;
+        padding: 1vh;
     }
 }
+

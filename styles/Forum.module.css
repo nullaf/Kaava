@@ -19,7 +19,13 @@
   width: 50vw;
   height: 50vh;
   transition: all 400ms ease-out;
+}
+.comments {
+  background: #393e46;
+  padding: 5px;
+  border-radius: 1%;
 
 }
+
 
 

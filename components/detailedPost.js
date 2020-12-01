@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styles from "../styles/Post.module.css";
 import { ThemeProvider } from "@material-ui/core/styles";
+import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
 import CardContent from "@material-ui/core/CardContent";
 import CardActions from "@material-ui/core/CardActions";
@@ -15,10 +16,7 @@ import Alert from "@material-ui/lab/Alert";
 import { motion } from "framer-motion";
 import theme from "./muiThemes/postMuiTheme";
 
-
 export default function detailedPost(props) {
-
-
   const [like, setLike] = useState(false);
   const [likeCount, setLikeCount] = useState(parseInt(props.likeCount));
   const [shareAlert, setShareAlert] = useState(false);
@@ -30,8 +28,7 @@ export default function detailedPost(props) {
         variant="outlined"
         style={{ backgroundColor: "#393E46" }}
       >
-        <motion.Card
-          className={styles.card}
+        <motion.div
           whileTap={{ scale: 0.97 }}
           animate={{
             scale: [0.5, 1],
@@ -39,84 +36,86 @@ export default function detailedPost(props) {
             transition: { duration: 0.3 },
           }}
         >
-          <CardHeader
-            avatar={
-              <Avatar
-                aria-label="recipe"
-                style={{ backgroundColor: "#ff2e63" }}
-              >
-                {props.title[0]}
-              </Avatar>
-            }
-            title={props.title}
-            titleTypographyProps={{ variant: "h6" }}
-            subheader={<TimeAgo date={props.date} />}
-          />
+          <Card className={styles.card}>
+            <CardHeader
+              avatar={
+                <Avatar
+                  aria-label="recipe"
+                  style={{ backgroundColor: "#ff2e63" }}
+                >
+                  {props.title[0]}
+                </Avatar>
+              }
+              title={props.title}
+              titleTypographyProps={{ variant: "h6" }}
+              subheader={<TimeAgo date={props.date} />}
+            />
 
-          <CardContent>
-            {" "}
-            <Typography variant="body1">{props.content}</Typography>{" "}
-          </CardContent>
-          <CardActions disableSpacing>
-            <IconButton
-              aria-label="like"
-              onClick={() => {
-                setLike(!like);
-                like
-                  ? setLikeCount(likeCount - 1)
-                  : setLikeCount(likeCount + 1);
-              }}
-            >
-              {like ? (
-                <ThumbUp color="primary" />
-              ) : (
-                <ThumbUpOutlined color="primary" />
-              )}
-              <Typography variant="body2" style={{ marginLeft: "5px" }}>
-                {likeCount} Likes
-              </Typography>
-            </IconButton>
-
-            <IconButton aria-label="comment">
-              <Comment color="primary" />
-
-              <Typography variant="body2" style={{ marginLeft: "5px" }}>
-                {props.commentCount} Comments
-              </Typography>
-            </IconButton>
-
-            <IconButton
-              aria-label="share"
-              onClick={() => {
-                navigator.clipboard.writeText(window.location.href);
-                setShareAlert(true);
-                setTimeout(() => {
-                  setShareAlert(false);
-                }, 2000);
-              }}
-            >
-              <ShareIcon color="primary" />
-              <Typography variant="body2" style={{ marginLeft: "5px" }}>
-                Share
-              </Typography>
-            </IconButton>
-          </CardActions>
-          {shareAlert && (
-            <motion.div
-              animate={{
-                scale: [0.5, 1, 1, 0.5],
-                rotate: [5, 0, 0, 5],
-                transition: { duration: 2 },
-              }}
-            >
+            <CardContent>
               {" "}
-              <Alert severity="success" variant="outlined">
+              <Typography variant="body1">{props.content}</Typography>{" "}
+            </CardContent>
+            <CardActions disableSpacing>
+              <IconButton
+                aria-label="like"
+                onClick={() => {
+                  setLike(!like);
+                  like
+                    ? setLikeCount(likeCount - 1)
+                    : setLikeCount(likeCount + 1);
+                }}
+              >
+                {like ? (
+                  <ThumbUp color="primary" />
+                ) : (
+                  <ThumbUpOutlined color="primary" />
+                )}
+                <Typography variant="body2" style={{ marginLeft: "5px" }}>
+                  {likeCount} Likes
+                </Typography>
+              </IconButton>
+
+              <IconButton aria-label="comment">
+                <Comment color="primary" />
+
+                <Typography variant="body2" style={{ marginLeft: "5px" }}>
+                  {props.comments.length} Comments
+                </Typography>
+              </IconButton>
+
+              <IconButton
+                aria-label="share"
+                onClick={() => {
+                  navigator.clipboard.writeText(window.location.href);
+                  setShareAlert(true);
+                  setTimeout(() => {
+                    setShareAlert(false);
+                  }, 2000);
+                }}
+              >
+                <ShareIcon color="primary" />
+                <Typography variant="body2" style={{ marginLeft: "5px" }}>
+                  Share
+                </Typography>
+              </IconButton>
+            </CardActions>
+            {shareAlert && (
+              <motion.div
+                animate={{
+                  scale: [0.5, 1, 1, 0.5],
+                  rotate: [5, 0, 0, 5],
+                  transition: { duration: 2 },
+                }}
+              >
                 {" "}
-                You successfully copied post to your clipboard!
-              </Alert>{" "}
-            </motion.div>
-          )}
-        </motion.Card>
+                <Alert severity="success" variant="outlined">
+                  {" "}
+                  You successfully copied post to your clipboard!
+                </Alert>{" "}
+              </motion.div>
+            )}
+          </Card>
+        </motion.div>
       </Paper>
     </ThemeProvider>
   );

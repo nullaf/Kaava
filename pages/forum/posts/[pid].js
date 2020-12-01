@@ -10,6 +10,8 @@ import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import IconButton from "@material-ui/core/IconButton";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 import Link from "next/link";
+import Comment from "../../../components/comment";
+import Addcomment from "../../../components/addComment";
 
 const theme = createMuiTheme({
   palette: {
@@ -35,7 +37,7 @@ function Pid() {
         </Head>
 
         <div className={styles.container}>
-          <Link href="/forum" >
+          <Link href="/forum">
             <IconButton aria-label="back">
               <ArrowBackIcon color="primary" fontSize="large" />
             </IconButton>
@@ -46,14 +48,22 @@ function Pid() {
             {data?.forum.posts.map((post) => {
               return (
                 post.id === pid && (
-                  <DetailedPost
-                    key={post.id}
-                    title={post.title}
-                    content={post.content}
-                    likeCount={post.likeCount}
-                    commentCount={post.commentCount}
-                    date={post.date}
-                  />
+                  <div key={post.id}>
+                    <DetailedPost
+                      key={post.id}
+                      title={post.title}
+                      content={post.content}
+                      likeCount={post.likeCount}
+                      comments={post.comments}
+                      date={post.date}
+                    />
+                    <div className={styles.comments}>
+                      <Addcomment/>
+                    {post.comments.map((comment) => {
+                      return <Comment comment={comment} />;
+                    })}
+                  </div>
+                  </div>
                 )
               );
             })}
