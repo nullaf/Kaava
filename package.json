@@ -22,6 +22,8 @@
   "devDependencies": {
     "@svgr/webpack": "^5.4.0",
     "clsx": "^1.1.1",
+    "eslint": "^7.14.0",
+    "eslint-plugin-react": "^7.21.5",
     "prettier": "^2.1.2"
   }
 }
