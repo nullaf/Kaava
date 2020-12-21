@@ -1,8 +1,8 @@
 .container {
     color: #eee;
     background: #222831;
-    min-height: 100vh;
-    padding: 0 0.5rem;
+    min-height: 100%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
