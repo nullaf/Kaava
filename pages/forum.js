@@ -38,7 +38,6 @@ function Forum() {
         <div className={styles.postContainer}>
           {!data && <Typography variant="h2">Loading</Typography>}
 
-
           {data?.forum.posts.map((post) => {
             return (
               post.title.toLowerCase().includes(searchValue.toLowerCase()) && (
