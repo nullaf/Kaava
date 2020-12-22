@@ -66,14 +66,15 @@
   min-height: 160px;
   min-width: 160px;
   text-decoration: none;
-  border: 1px solid #eeeeee;
+  border: 1px solid #393e46;
   border-radius: 10px;
   width: 20vw;
   height: 20vh;
   max-width: 22vw;
   max-height: 22vh;
   transition: color 0.15s ease, border-color 0.15s ease;
-  box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: inset -20px 20px 60px #1d222a,
+  inset 20px -20px 60px #272e38;
 }
 
 .card:hover,
