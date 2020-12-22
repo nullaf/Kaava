@@ -1,43 +1,54 @@
-import { useState } from "react";
-import {
-  MapContainer,
-  Marker,
-  Popup,
-  TileLayer,
-  useMapEvents,
-} from "react-leaflet";
+import { MapContainer, TileLayer, useMap } from "react-leaflet";
+import { OpenStreetMapProvider, GeoSearchControl } from "leaflet-geosearch";
+import Locate from "leaflet.locatecontrol";
 
 const MapComponent = () => {
-  const LocationMarker = () => {
-    const [position, setPosition] = useState(null);
-    const map = useMapEvents({
-      click() {
-        map.locate();
-      },
-      locationfound(e) {
-        setPosition(e.latlng);
-        map.flyTo(e.latlng, map.getZoom());
-      },
+  const SearchField = () => {
+    const map = useMap();
+    const search = new GeoSearchControl({
+      style: "bar",
+      provider: new OpenStreetMapProvider(),
+      animateZoom: true,
+      zoomLevel: 15,
     });
+    map.addControl(search);
 
-    return position === null ? null : (
-      <Marker position={position}>
-        <Popup>You are here</Popup>
-      </Marker>
-    );
+    return null;
+  };
+  const MapLocate = () => {
+    const map = useMap();
+    const locateOptions = {
+      position: "topleft",
+      strings: {
+        title: "Locate me",
+      },
+      flyTo: true,
+      drawCircle: false,
+      showPopup: false,
+      initialZoomLevel: 15,
+      onActivate: () => {},
+    };
+    const lc = new Locate(locateOptions);
+    lc.addTo(map);
+    return null;
   };
 
   return (
     <MapContainer
       center={[40.987, 29.0528]}
       zoom={15}
-      scrollWheelZoom={false}
+      scrollWheelZoom={true}
       style={{ height: "88vh", width: "100%" }}
     >
-      <TileLayer url="https://api.mapbox.com/styles/v1/nullaf/ckiyuiifl51u619o2rxufyzrm/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoibnVsbGFmIiwiYSI6ImNraXl4OTU0aDFoNXAyem1lc2h6MHdzd2EifQ.2m0ZR7A6RREt1vgCUy2K4Q" />
+      <TileLayer
+        url="https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png"
+        attribution='&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
+      />
+      <SearchField />
 
-      <LocationMarker />
+      <MapLocate />
     </MapContainer>
   );
 };
+
 export default MapComponent;
