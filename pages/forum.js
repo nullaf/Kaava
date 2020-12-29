@@ -7,55 +7,85 @@ import Head from "next/head";
 import useSWR from "swr";
 import fetcher from "../lib/fetch";
 import Typography from "@material-ui/core/Typography";
+import Button from "@material-ui/core/Button";
+import theme from "../components/muiThemes/postMuiTheme";
+import { ThemeProvider } from "@material-ui/core/styles";
+import PostAddModal from "../components/postAddModal";
 
 function Forum() {
   const [searchValue, setSearchValue] = useState("");
   const [isLoginClicked, setLoginClicked] = useState(false);
   const [isSignupClicked, setSignupClicked] = useState(false);
 
-  const { data, error } = useSWR("/api/dummyposts", fetcher);
+  const [isAddPostClicked, setAddPostClicked] = useState(false);
+
+  const { data, error } = useSWR(
+    "https://cors-anywhere.herokuapp.com/https://kaavabackend.herokuapp.com/posts",
+    fetcher
+  );
 
   return (
-    <div>
-      <Head>
-        <title>Forum</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <Forumnav
-        loginStatus={setLoginClicked}
-        signupStatus={setSignupClicked}
-        searchValue={searchValue}
-        setSearchValue={setSearchValue}
-      />
-
-      <div className={styles.container}>
-        <LoginModal
-          isLoginClicked={isLoginClicked}
-          isSignupClicked={isSignupClicked}
-          setSignupClicked={setSignupClicked}
-          setLoginClicked={setLoginClicked}
+    <ThemeProvider theme={theme}>
+      <div>
+        <Head>
+          <title>Forum</title>
+          <link rel="icon" href="/favicon.ico" />
+        </Head>
+        <Forumnav
+          loginStatus={setLoginClicked}
+          signupStatus={setSignupClicked}
+          searchValue={searchValue}
+          setSearchValue={setSearchValue}
         />
-        <div className={styles.postContainer}>
-          {!data && <Typography variant="h2">Loading</Typography>}
 
-          {data?.forum.posts.map((post) => {
-            return (
-              post.title.toLowerCase().includes(searchValue.toLowerCase()) && (
-                <Post
-                  key={post.id}
-                  id={post.id}
-                  title={post.title}
-                  content={post.content}
-                  likeCount={post.likeCount}
-                  comments={post.comments}
-                  date={post.date}
-                />
-              )
-            );
-          })}
+        <div className={styles.container}>
+          <LoginModal
+            isLoginClicked={isLoginClicked}
+            isSignupClicked={isSignupClicked}
+            setSignupClicked={setSignupClicked}
+            setLoginClicked={setLoginClicked}
+          />
+
+          <div className={styles.postContainer}>
+            <div className={styles.addPost}>
+              <Button
+                color="primary"
+                variant="contained"
+                fullWidth
+                onClick={() => setAddPostClicked(true)}
+              >
+                Add
+              </Button>
+              <PostAddModal
+                setAddPostClicked={setAddPostClicked}
+                isAddPostClicked={isAddPostClicked}
+              />
+            </div>
+            {!data && <Typography variant="h2">Loading</Typography>}
+
+            {data?.map((post) => {
+              return (
+                post.postName
+                  .toLowerCase()
+                  .includes(searchValue.toLowerCase()) && (
+                  <Post
+                    key={post.id}
+                    id={post.id}
+                    title={post.postName}
+                    content={post.postDescription}
+                    likeCount={post.postLike}
+                    comments={[
+                      "Turpis tincidunt id aliquet risus feugiat in ante metus dictum.",
+                    ]}
+                    date={post.postTime}
+                  />
+                )
+              );
+            })}
+          </div>
         </div>
       </div>
-    </div>
+    </ThemeProvider>
   );
 }
 

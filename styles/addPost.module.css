@@ -1,0 +1,13 @@
+.container {
+    width: 50vw;
+    height: 50vh;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin: auto;
+    text-align: center;
+    padding: 20px;
+    background: #393e46;
+
+
+}
