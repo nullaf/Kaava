@@ -8,6 +8,15 @@
   align-items: center;
   text-align: center;
 }
+.addPost {
+  background: #222831;
+  width: 50%;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: auto;
+  padding: 5px;
+}
 .postContainer {
   display: grid;
   grid-gap: 2.5vh;

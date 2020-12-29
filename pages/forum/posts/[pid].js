@@ -23,7 +23,10 @@ const theme = createMuiTheme({
 });
 
 function Pid() {
-  const { data, error } = useSWR("/api/dummyposts", fetcher);
+  const { data, error } = useSWR(
+    "https://cors-anywhere.herokuapp.com/https://kaavabackend.herokuapp.com/posts",
+    fetcher
+  );
 
   const router = useRouter();
   const { pid } = router.query;
@@ -45,24 +48,28 @@ function Pid() {
 
           <div className={styles.postContainer}>
             {!data && <Typography variant="h2">Loading</Typography>}
-            {data?.forum.posts.map((post) => {
+            {data?.map((post) => {
               return (
-                post.id === pid && (
+                post.id === parseInt(pid) && (
                   <div key={post.id}>
                     <DetailedPost
                       key={post.id}
-                      title={post.title}
-                      content={post.content}
-                      likeCount={post.likeCount}
-                      comments={post.comments}
-                      date={post.date}
+                      title={post.postName}
+                      content={post.postDescription}
+                      likeCount={post.postLike}
+                      comments={[
+                        "Turpis tincidunt id aliquet risus feugiat in ante metus dictum.",
+                      ]}
+                      date={post.postTime}
                     />
                     <div className={styles.comments}>
-                      <Addcomment/>
-                    {post.comments.map((comment) => {
-                      return <Comment comment={comment} />;
-                    })}
-                  </div>
+                      <Addcomment />
+                      {[
+                        "Turpis tincidunt id aliquet risus feugiat in ante metus dictum.",
+                      ].map((comment) => {
+                        return <Comment comment={comment} />;
+                      })}
+                    </div>
                   </div>
                 )
               );

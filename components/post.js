@@ -31,7 +31,6 @@ export default function Post(props) {
         style={{ backgroundColor: "#393E46" }}
       >
         <motion.div
-
           whileTap={{ scale: 0.97 }}
           whileHover={{ scale: 0.99 }}
           animate={{
