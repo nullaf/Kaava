@@ -21,7 +21,9 @@ export default function Post(props) {
   const [like, setLike] = useState(false);
   const [likeCount, setLikeCount] = useState(parseInt(props.likeCount));
   const [shareAlert, setShareAlert] = useState(false);
-  const [contentClicked, setContentClicked] = useState(false);
+  const [contentClicked, setContentClicked] = useState(
+    props.content.length < 100
+  );
 
   return (
     <ThemeProvider theme={theme}>
