@@ -64,23 +64,26 @@ function Forum() {
             </div>
             {!data && <Typography variant="h2">Loading</Typography>}
 
-            {data?.map((post) => {
-              return (
-                post.postName
-                  .toLowerCase()
-                  .includes(searchValue.toLowerCase()) && (
-                  <Post
-                    key={post.id}
-                    id={post.id}
-                    title={post.postName}
-                    content={post.postDescription}
-                    likeCount={post.postLike}
-                    comments={[]}
-                    date={post.postTime}
-                  />
-                )
-              );
-            })}
+            {data
+              ?.slice(0)
+              .reverse()
+              .map((post) => {
+                return (
+                  post.postName
+                    .toLowerCase()
+                    .includes(searchValue.toLowerCase()) && (
+                    <Post
+                      key={post.id}
+                      id={post.id}
+                      title={post.postName}
+                      content={post.postDescription}
+                      likeCount={post.postLike}
+                      comments={[]}
+                      date={post.postTime}
+                    />
+                  )
+                );
+              })}
           </div>
         </div>
       </div>
