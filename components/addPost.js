@@ -6,7 +6,7 @@ import { ThemeProvider } from "@material-ui/core/styles";
 import { useState } from "react";
 import styles from "../styles/addPost.module.css";
 
-const AddPost = ({ setAddPostClicked, isAddPostClicked }) => {
+const AddPost = ({ setAddPostClicked, isAddPostClicked, mutate }) => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
 
@@ -27,13 +27,20 @@ const AddPost = ({ setAddPostClicked, isAddPostClicked }) => {
     fetch(
       "https://cors-anywhere.herokuapp.com/https://kaavabackend.herokuapp.com/posts",
       requestOptions
-    ).then((response) => response.json());
+    ).then((response) => {
+      response.json();
+      mutate();
+    });
   };
 
   return (
     <ThemeProvider theme={theme}>
       <div className={styles.container}>
+        <Typography variant="h4" color="primary">
+          Adding New Post
+        </Typography>
         <TextField
+          style={{ marginTop: 10 }}
           variant="outlined"
           color="secondary"
           label="Title"

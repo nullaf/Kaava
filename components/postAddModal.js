@@ -5,7 +5,7 @@ import AddPost from "./addPost";
 import Modal from "@material-ui/core/Modal";
 import React from "react";
 
-const PostAddModal = ({ setAddPostClicked, isAddPostClicked }) => {
+const PostAddModal = ({ setAddPostClicked, isAddPostClicked, mutate }) => {
   const handleClose = () => {
     setAddPostClicked(false);
   };
@@ -30,6 +30,7 @@ const PostAddModal = ({ setAddPostClicked, isAddPostClicked }) => {
             <AddPost
               setAddPostClicked={setAddPostClicked}
               isAddPostClicked={isAddPostClicked}
+              mutate={mutate}
             />
           )}
         </div>

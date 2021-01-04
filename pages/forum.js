@@ -19,7 +19,7 @@ function Forum() {
 
   const [isAddPostClicked, setAddPostClicked] = useState(false);
 
-  const { data, error } = useSWR(
+  const { data, error, mutate } = useSWR(
     "https://cors-anywhere.herokuapp.com/https://kaavabackend.herokuapp.com/posts",
     fetcher
   );
@@ -59,6 +59,7 @@ function Forum() {
               <PostAddModal
                 setAddPostClicked={setAddPostClicked}
                 isAddPostClicked={isAddPostClicked}
+                mutate={mutate}
               />
             </div>
             {!data && <Typography variant="h2">Loading</Typography>}
@@ -74,9 +75,7 @@ function Forum() {
                     title={post.postName}
                     content={post.postDescription}
                     likeCount={post.postLike}
-                    comments={[
-                      "Turpis tincidunt id aliquet risus feugiat in ante metus dictum.",
-                    ]}
+                    comments={[]}
                     date={post.postTime}
                   />
                 )

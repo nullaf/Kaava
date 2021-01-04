@@ -57,16 +57,12 @@ function Pid() {
                       title={post.postName}
                       content={post.postDescription}
                       likeCount={post.postLike}
-                      comments={[
-                        "Turpis tincidunt id aliquet risus feugiat in ante metus dictum.",
-                      ]}
+                      comments={[]}
                       date={post.postTime}
                     />
                     <div className={styles.comments}>
                       <Addcomment />
-                      {[
-                        "Turpis tincidunt id aliquet risus feugiat in ante metus dictum.",
-                      ].map((comment) => {
+                      {[].map((comment) => {
                         return <Comment comment={comment} />;
                       })}
                     </div>
