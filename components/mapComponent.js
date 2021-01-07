@@ -1,6 +1,7 @@
-import { MapContainer, TileLayer, useMap } from "react-leaflet";
+import { MapContainer, TileLayer, useMap, Marker, Popup } from "react-leaflet";
 import { OpenStreetMapProvider, GeoSearchControl } from "leaflet-geosearch";
 import Locate from "leaflet.locatecontrol";
+import { iconFood } from "../lib/iconFood";
 
 const MapComponent = () => {
   const SearchField = () => {
@@ -32,7 +33,7 @@ const MapComponent = () => {
     lc.addTo(map);
     return null;
   };
-
+  const position = [40.987, 29.0528];
   return (
     <MapContainer
       center={[40.987, 29.0528]}
@@ -45,6 +46,9 @@ const MapComponent = () => {
         attribution='&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
       />
       <SearchField />
+      <Marker position={position} icon={iconFood}>
+        <Popup>Test</Popup>
+      </Marker>
 
       <MapLocate />
     </MapContainer>
