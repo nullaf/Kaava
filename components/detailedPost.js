@@ -15,11 +15,32 @@ import TimeAgo from "react-timeago";
 import Alert from "@material-ui/lab/Alert";
 import { motion } from "framer-motion";
 import theme from "./muiThemes/postMuiTheme";
+import CorsUrl from "../lib/corsUrl";
 
 export default function detailedPost(props) {
   const [like, setLike] = useState(false);
   const [likeCount, setLikeCount] = useState(parseInt(props.likeCount));
   const [shareAlert, setShareAlert] = useState(false);
+
+  const onClickLike = () => {
+    setLike(!like);
+    like ? setLikeCount(likeCount - 1) : setLikeCount(likeCount + 1);
+
+    const requestOptions = {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        id: props.id,
+        postLike: like ? -1 : 1,
+      }),
+    };
+    fetch(
+      CorsUrl + "https://kaavabackend.herokuapp.com/postLike",
+      requestOptions
+    ).then((response) => {
+      response.json();
+    });
+  };
 
   return (
     <ThemeProvider theme={theme}>
@@ -57,10 +78,7 @@ export default function detailedPost(props) {
               <IconButton
                 aria-label="like"
                 onClick={() => {
-                  setLike(!like);
-                  like
-                    ? setLikeCount(likeCount - 1)
-                    : setLikeCount(likeCount + 1);
+                  onClickLike();
                 }}
               >
                 {like ? (

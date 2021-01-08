@@ -1,10 +1,6 @@
 import styles from "../../../styles/Forum.module.css";
 import React, { useState } from "react";
-import DetailedPost from "../../../components/detailedPost";
 import Head from "next/head";
-import useSWR from "swr";
-import fetcher from "../../../lib/fetch";
-import Typography from "@material-ui/core/Typography";
 import { useRouter } from "next/router";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import IconButton from "@material-ui/core/IconButton";
