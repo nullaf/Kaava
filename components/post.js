@@ -48,9 +48,7 @@ export default function Post(props) {
                   <Avatar
                     aria-label="avatar"
                     style={{ backgroundColor: "#ff2e63" }}
-                  >
-                    {props.title[0]}
-                  </Avatar>
+                  ></Avatar>
                 }
                 title={props.title}
                 titleTypographyProps={{ variant: "h6" }}
@@ -71,7 +69,7 @@ export default function Post(props) {
                 <CardContent>
                   {" "}
                   <Typography variant="body1">
-                    {props.content.slice(0, 100) + "..."}
+                    {String(props.content).slice(0, 100) + "..."}
                   </Typography>{" "}
                 </CardContent>
               )}

@@ -13,7 +13,7 @@ export default function Addcomment({ mutate, id }) {
       body: JSON.stringify({
         postID: id,
         senderName: "Guest",
-        commentPost: comment,
+        commentPost: String(comment),
         commentTime: new Date(),
       }),
     };
@@ -23,6 +23,7 @@ export default function Addcomment({ mutate, id }) {
     ).then((response) => {
       response.json();
       mutate();
+      setComment("");
     });
   };
   return (

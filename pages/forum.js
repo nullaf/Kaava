@@ -70,7 +70,7 @@ function Forum() {
               .reverse()
               .map((post) => {
                 return (
-                  post.postName
+                  String(post.postName)
                     .toLowerCase()
                     .includes(searchValue.toLowerCase()) && (
                     <Post

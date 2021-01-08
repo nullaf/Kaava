@@ -42,9 +42,7 @@ export default function detailedPost(props) {
                 <Avatar
                   aria-label="recipe"
                   style={{ backgroundColor: "#ff2e63" }}
-                >
-                  {props.title[0]}
-                </Avatar>
+                ></Avatar>
               }
               title={props.title}
               titleTypographyProps={{ variant: "h6" }}

@@ -14,7 +14,7 @@ const CommentComponent = ({ id }) => {
   );
   return (
     <div>
-      {(!data || error) && <CircularProgress color="primary" />}
+      {!data && !error && <CircularProgress color="primary" />}
       {(data || error) && <Addcomment mutate={mutate} id={id} />}
       {data?.map((comment) => {
         return <Comment comment={comment} />;

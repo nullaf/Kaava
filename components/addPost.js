@@ -17,9 +17,9 @@ const AddPost = ({ setAddPostClicked, isAddPostClicked, mutate }) => {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        postName: title,
+        postName: String(title),
         name: "Guest",
-        postDescription: content,
+        postDescription: String(content),
         postLike: 0,
         postTime: new Date(),
       }),
