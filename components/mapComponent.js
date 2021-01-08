@@ -2,8 +2,11 @@ import { MapContainer, TileLayer, useMap, Marker, Popup } from "react-leaflet";
 import { OpenStreetMapProvider, GeoSearchControl } from "leaflet-geosearch";
 import Locate from "leaflet.locatecontrol";
 import { iconFood } from "../lib/iconFood";
+import useSWR from "swr";
+import fetcher from "../lib/fetch";
 
 const MapComponent = () => {
+  const { data, error, mutate } = useSWR("/api/dummycans", fetcher);
   const SearchField = () => {
     const map = useMap();
     const search = new GeoSearchControl({
@@ -46,9 +49,13 @@ const MapComponent = () => {
         attribution='&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
       />
       <SearchField />
-      <Marker position={position} icon={iconFood}>
-        <Popup>Test</Popup>
-      </Marker>
+      {data?.kmap.cans.map((can) => {
+        return (
+          <Marker position={can.coordinates} icon={iconFood}>
+            <Popup>Animal Food Can</Popup>
+          </Marker>
+        );
+      })}
 
       <MapLocate />
     </MapContainer>
