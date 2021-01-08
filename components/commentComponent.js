@@ -9,13 +9,15 @@ import { CircularProgress } from "@material-ui/core";
 
 const CommentComponent = ({ id }) => {
   const { data, error, mutate } = useSWR(
-    `https://api.allorigins.win/raw?url=https://kaavabackend.herokuapp.com/postComments/${id}`,
+    `https://cors-anywhere.herokuapp.com/https://kaavabackend.herokuapp.com/postComments/${id}`,
     fetcher
   );
+
   return (
     <div>
       {!data && !error && <CircularProgress color="primary" />}
       {(data || error) && <Addcomment mutate={mutate} id={id} />}
+      {data && console.log(data)}
       {data?.map((comment) => {
         return <Comment comment={comment} />;
       })}

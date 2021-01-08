@@ -9,7 +9,7 @@ import { CircularProgress } from "@material-ui/core";
 
 const DetailedPostComponent = (props) => {
   const { data, error } = useSWR(
-    `https://api.allorigins.win/raw?url=https://kaavabackend.herokuapp.com/posts/${props.id}`,
+    `https://cors-anywhere.herokuapp.com/https://kaavabackend.herokuapp.com/posts/${props.id}`,
     fetcher
   );
 

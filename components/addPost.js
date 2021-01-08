@@ -6,7 +6,7 @@ import { ThemeProvider } from "@material-ui/core/styles";
 import { useState } from "react";
 import styles from "../styles/addPost.module.css";
 
-const AddPost = ({ setAddPostClicked, isAddPostClicked, mutate }) => {
+const AddPost = ({ setAddPostClicked, mutate }) => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
 

@@ -21,7 +21,7 @@ function Forum() {
   const [isAddPostClicked, setAddPostClicked] = useState(false);
 
   const { data, error, mutate } = useSWR(
-    "https://api.allorigins.win/raw?url=https://kaavabackend.herokuapp.com/posts",
+    "https://cors-anywhere.herokuapp.com/https://kaavabackend.herokuapp.com/posts",
     fetcher
   );
 

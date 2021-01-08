@@ -18,7 +18,7 @@ export default function Addcomment({ mutate, id }) {
       }),
     };
     fetch(
-      `https://cors-anywhere.herokuapp.com/https://kaavabackend.herokuapp.com/comments`,
+      "https://cors-anywhere.herokuapp.com/https://kaavabackend.herokuapp.com/comments",
       requestOptions
     ).then((response) => {
       response.json();
