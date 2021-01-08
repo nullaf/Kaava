@@ -5,6 +5,7 @@ import theme from "./muiThemes/postMuiTheme";
 import { ThemeProvider } from "@material-ui/core/styles";
 import { useState } from "react";
 import styles from "../styles/addPost.module.css";
+import CorsUrl from "../lib/corsUrl";
 
 const AddPost = ({ setAddPostClicked, mutate }) => {
   const [title, setTitle] = useState("");
@@ -25,7 +26,7 @@ const AddPost = ({ setAddPostClicked, mutate }) => {
       }),
     };
     fetch(
-      "https://cors-anywhere.herokuapp.com/https://kaavabackend.herokuapp.com/posts",
+      CorsUrl + "https://kaavabackend.herokuapp.com/posts",
       requestOptions
     ).then((response) => {
       response.json();

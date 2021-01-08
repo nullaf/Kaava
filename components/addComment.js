@@ -2,6 +2,7 @@ import styles from "../styles/Comment.module.css";
 import { TextField } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 import { useState } from "react";
+import CorsUrl from "../lib/corsUrl";
 
 export default function Addcomment({ mutate, id }) {
   const [comment, setComment] = useState("");
@@ -18,7 +19,7 @@ export default function Addcomment({ mutate, id }) {
       }),
     };
     fetch(
-      "https://cors-anywhere.herokuapp.com/https://kaavabackend.herokuapp.com/comments",
+      CorsUrl + "https://kaavabackend.herokuapp.com/comments",
       requestOptions
     ).then((response) => {
       response.json();

@@ -12,6 +12,7 @@ import theme from "../components/muiThemes/postMuiTheme";
 import { ThemeProvider } from "@material-ui/core/styles";
 import PostAddModal from "../components/postAddModal";
 import { CircularProgress } from "@material-ui/core";
+import CorsUrl from "../lib/corsUrl";
 
 function Forum() {
   const [searchValue, setSearchValue] = useState("");
@@ -21,7 +22,7 @@ function Forum() {
   const [isAddPostClicked, setAddPostClicked] = useState(false);
 
   const { data, error, mutate } = useSWR(
-    "https://cors-anywhere.herokuapp.com/https://kaavabackend.herokuapp.com/posts",
+    CorsUrl + "https://kaavabackend.herokuapp.com/posts",
     fetcher
   );
 

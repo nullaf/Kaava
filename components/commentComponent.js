@@ -6,10 +6,11 @@ import useSWR from "swr";
 import fetcher from "../lib/fetch";
 import Typography from "@material-ui/core/Typography";
 import { CircularProgress } from "@material-ui/core";
+import CorsUrl from "../lib/corsUrl";
 
 const CommentComponent = ({ id }) => {
   const { data, error, mutate } = useSWR(
-    `https://cors-anywhere.herokuapp.com/https://kaavabackend.herokuapp.com/postComments/${id}`,
+    CorsUrl + `https://kaavabackend.herokuapp.com/postComments/${id}`,
     fetcher
   );
 
@@ -17,7 +18,6 @@ const CommentComponent = ({ id }) => {
     <div>
       {!data && !error && <CircularProgress color="primary" />}
       {(data || error) && <Addcomment mutate={mutate} id={id} />}
-      {data && console.log(data)}
       {data?.map((comment) => {
         return <Comment comment={comment} />;
       })}

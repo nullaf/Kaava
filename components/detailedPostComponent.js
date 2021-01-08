@@ -6,10 +6,11 @@ import CommentComponent from "./commentComponent";
 import useSWR from "swr";
 import fetcher from "../lib/fetch";
 import { CircularProgress } from "@material-ui/core";
+import CorsUrl from "../lib/corsUrl";
 
 const DetailedPostComponent = (props) => {
   const { data, error } = useSWR(
-    `https://cors-anywhere.herokuapp.com/https://kaavabackend.herokuapp.com/posts/${props.id}`,
+    CorsUrl + `https://kaavabackend.herokuapp.com/posts/${props.id}`,
     fetcher
   );
 
