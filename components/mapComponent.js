@@ -16,6 +16,7 @@ const MapComponent = () => {
       provider: new OpenStreetMapProvider(),
       animateZoom: true,
       zoomLevel: 15,
+      autoClose: true,
     });
     map.addControl(search);
 
