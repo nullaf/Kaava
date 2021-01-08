@@ -4,6 +4,8 @@ import Locate from "leaflet.locatecontrol";
 import { iconFood } from "../lib/iconFood";
 import useSWR from "swr";
 import fetcher from "../lib/fetch";
+import Button from "@material-ui/core/Button";
+import Typography from "@material-ui/core/Typography";
 
 const MapComponent = () => {
   const { data, error, mutate } = useSWR("/api/dummycans", fetcher);
@@ -36,7 +38,7 @@ const MapComponent = () => {
     lc.addTo(map);
     return null;
   };
-  const position = [40.987, 29.0528];
+
   return (
     <MapContainer
       center={[40.987, 29.0528]}
@@ -52,7 +54,24 @@ const MapComponent = () => {
       {data?.kmap.cans.map((can) => {
         return (
           <Marker position={can.coordinates} icon={iconFood}>
-            <Popup>Animal Food Can</Popup>
+            <div>
+              <Popup maxWidth="45vw" maxHeight="45vh">
+                <div
+                  style={{
+                    textAlign: "center",
+                    display: "flex",
+                    justifyContent: "center",
+                    flexDirection: "column",
+                  }}
+                >
+                  <Typography variant="h6">Animal Food Can</Typography>
+
+                  <Button color="primary" variant="outlined">
+                    Change
+                  </Button>
+                </div>
+              </Popup>
+            </div>
           </Marker>
         );
       })}
