@@ -2,6 +2,13 @@
     margin: 4px;
     padding: 5px;
     background: #393e46;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    text-align: center;
+}
+.addCommentTextfield {
+    width: 90%;
 }
 
 .comment {

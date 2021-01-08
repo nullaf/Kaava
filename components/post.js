@@ -101,7 +101,7 @@ export default function Post(props) {
                   <Comment color="primary" />
 
                   <Typography variant="body2" style={{ marginLeft: "5px" }}>
-                    {props.comments.length} Comments
+                    Comments
                   </Typography>
                 </IconButton>
               </Link>

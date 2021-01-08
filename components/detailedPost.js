@@ -75,14 +75,6 @@ export default function detailedPost(props) {
                 </Typography>
               </IconButton>
 
-              <IconButton aria-label="comment">
-                <Comment color="primary" />
-
-                <Typography variant="body2" style={{ marginLeft: "5px" }}>
-                  {props.comments.length} Comments
-                </Typography>
-              </IconButton>
-
               <IconButton
                 aria-label="share"
                 onClick={() => {

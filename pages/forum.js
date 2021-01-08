@@ -11,6 +11,7 @@ import Button from "@material-ui/core/Button";
 import theme from "../components/muiThemes/postMuiTheme";
 import { ThemeProvider } from "@material-ui/core/styles";
 import PostAddModal from "../components/postAddModal";
+import { CircularProgress } from "@material-ui/core";
 
 function Forum() {
   const [searchValue, setSearchValue] = useState("");
@@ -20,7 +21,7 @@ function Forum() {
   const [isAddPostClicked, setAddPostClicked] = useState(false);
 
   const { data, error, mutate } = useSWR(
-    "https://cors-anywhere.herokuapp.com/https://kaavabackend.herokuapp.com/posts",
+    "https://api.allorigins.win/raw?url=https://kaavabackend.herokuapp.com/posts",
     fetcher
   );
 
@@ -62,7 +63,7 @@ function Forum() {
                 mutate={mutate}
               />
             </div>
-            {!data && <Typography variant="h2">Loading</Typography>}
+            {!data && <CircularProgress color="primary" />}
 
             {data
               ?.slice(0)

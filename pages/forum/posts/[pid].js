@@ -8,26 +8,13 @@ import Typography from "@material-ui/core/Typography";
 import { useRouter } from "next/router";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import IconButton from "@material-ui/core/IconButton";
-import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
+import { ThemeProvider } from "@material-ui/core/styles";
 import Link from "next/link";
-import Comment from "../../../components/comment";
-import Addcomment from "../../../components/addComment";
-
-const theme = createMuiTheme({
-  palette: {
-    type: "dark",
-    primary: {
-      main: "#00adb5",
-    },
-  },
-});
+import CommentComponent from "../../../components/commentComponent";
+import theme from "../../../components/muiThemes/postMuiTheme";
+import DetailedPostComponent from "../../../components/detailedPostComponent";
 
 function Pid() {
-  const { data, error } = useSWR(
-    "https://cors-anywhere.herokuapp.com/https://kaavabackend.herokuapp.com/posts",
-    fetcher
-  );
-
   const router = useRouter();
   const { pid } = router.query;
 
@@ -47,29 +34,9 @@ function Pid() {
           </Link>
 
           <div className={styles.postContainer}>
-            {!data && <Typography variant="h2">Loading</Typography>}
-            {data?.map((post) => {
-              return (
-                post.id === parseInt(pid) && (
-                  <div key={post.id}>
-                    <DetailedPost
-                      key={post.id}
-                      title={post.postName}
-                      content={post.postDescription}
-                      likeCount={post.postLike}
-                      comments={[]}
-                      date={post.postTime}
-                    />
-                    <div className={styles.comments}>
-                      <Addcomment />
-                      {[].map((comment) => {
-                        return <Comment comment={comment} />;
-                      })}
-                    </div>
-                  </div>
-                )
-              );
-            })}
+            <DetailedPostComponent id={pid} />
+
+            <CommentComponent id={pid} />
           </div>
         </div>
       </div>
