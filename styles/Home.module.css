@@ -3,7 +3,7 @@
   position: absolute;
   width: 100%;
   height: 100%;
-  background: #222831;
+  background-image: linear-gradient(to left top, #222831, #282d36, #2d333b, #333841, #393e46);
   padding: 0 0.5rem;
   display: flex;
   flex-direction: column;

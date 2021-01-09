@@ -8,42 +8,50 @@ const ParticleBackground = () => {
             value: 100,
             density: {
               enable: true,
-              value_area: 1500,
+            },
+          },
+          size: {
+            value: 3,
+            random: true,
+            anim: {
+              speed: 3,
+              size_min: 0.2,
             },
           },
           line_linked: {
-            enable: true,
-            opacity: 0.12,
+            enable: false,
           },
           move: {
             random: true,
-            speed: 0.5,
-          },
-          size: {
-            value: 1.5,
-          },
-          opacity: {
-            anim: {
-              enable: true,
-              speed: 1,
-              opacity_min: 0.24,
-            },
+            speed: 1,
+            direction: "top",
+            out_mode: "out",
           },
         },
         interactivity: {
           events: {
+            onhover: {
+              enable: true,
+              mode: "bubble",
+            },
             onclick: {
               enable: true,
-              mode: "push",
+              mode: "repulse",
             },
           },
           modes: {
-            push: {
-              particles_nb: 1,
+            bubble: {
+              distance: 200,
+              duration: 1.5,
+              size: 0,
+              opacity: 0,
+            },
+            repulse: {
+              distance: 300,
+              duration: 3,
             },
           },
         },
-        retina_detect: true,
       }}
     />
   );
