@@ -1,6 +1,7 @@
 import styles from "../styles/Home.module.css";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import ParticleBackground from "./particleBackground";
 
 const Homepage = () => {
   return (
@@ -12,6 +13,7 @@ const Homepage = () => {
       >
         Welcome to <a>Kaava</a>!
       </motion.h1>
+
       <div className={styles.cardwithsvg}>
         <Link href="/map">
           <motion.img
@@ -30,13 +32,20 @@ const Homepage = () => {
         </Link>
 
         <Link href="/map">
-          <motion.a className={styles.card} whileTap={{ scale: 0.85 }} href="/map">
+          <motion.a
+            className={styles.card}
+            whileTap={{ scale: 0.85 }}
+            href="/map"
+          >
             <h2>&larr; Map</h2>
-
           </motion.a>
         </Link>
         <Link href="/forum">
-          <motion.a className={styles.card} whileTap={{ scale: 0.85 }} href="/forum">
+          <motion.a
+            className={styles.card}
+            whileTap={{ scale: 0.85 }}
+            href="/forum"
+          >
             <h2 className="forumCard">Forum &rarr;</h2>
           </motion.a>
         </Link>

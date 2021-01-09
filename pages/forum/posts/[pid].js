@@ -9,6 +9,7 @@ import Link from "next/link";
 import CommentComponent from "../../../components/commentComponent";
 import theme from "../../../components/muiThemes/postMuiTheme";
 import DetailedPostComponent from "../../../components/detailedPostComponent";
+import ParticleBackground from "../../../components/particleBackground";
 
 function Pid() {
   const router = useRouter();
@@ -16,6 +17,16 @@ function Pid() {
 
   return (
     <ThemeProvider theme={theme}>
+      <ParticleBackground
+        style={{
+          width: "100%",
+          height: "100%",
+          position: "fixed",
+          zIndex: -10,
+          top: 0,
+          left: 0,
+        }}
+      />
       <div>
         <Head>
           <title>Forum</title>

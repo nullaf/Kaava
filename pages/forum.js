@@ -13,6 +13,7 @@ import { ThemeProvider } from "@material-ui/core/styles";
 import PostAddModal from "../components/postAddModal";
 import { CircularProgress } from "@material-ui/core";
 import CorsUrl from "../lib/corsUrl";
+import ParticleBackground from "../components/particleBackground";
 
 function Forum() {
   const [searchValue, setSearchValue] = useState("");
@@ -28,6 +29,16 @@ function Forum() {
 
   return (
     <ThemeProvider theme={theme}>
+      <ParticleBackground
+        style={{
+          width: "100%",
+          height: "100%",
+          position: "fixed",
+          zIndex: -10,
+          top: 0,
+          left: 0,
+        }}
+      />
       <div>
         <Head>
           <title>Forum</title>

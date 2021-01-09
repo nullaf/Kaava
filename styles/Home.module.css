@@ -1,3 +1,4 @@
+
 .container {
   position: absolute;
   width: 100%;
@@ -26,6 +27,7 @@
   align-items: center;
   flex-wrap: nowrap;
   margin-top: 3rem;
+  z-index: 1;
 }
 .cardwithsvg img {
   width: 100%;
@@ -49,6 +51,7 @@
   margin: 0;
   line-height: 1.15;
   font-size: 4rem;
+  z-index: 1;
 }
 
 .description {
@@ -75,6 +78,7 @@
   transition: color 0.15s ease, border-color 0.15s ease;
   box-shadow: inset -20px 20px 60px #1d222a,
   inset 20px -20px 60px #272e38;
+  z-index: 1;
 }
 
 .card:hover,
