@@ -6,7 +6,6 @@ import Post from "../components/post";
 import Head from "next/head";
 import useSWR from "swr";
 import fetcher from "../lib/fetch";
-import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import theme from "../components/muiThemes/postMuiTheme";
 import { ThemeProvider } from "@material-ui/core/styles";
@@ -14,6 +13,7 @@ import PostAddModal from "../components/postAddModal";
 import { CircularProgress } from "@material-ui/core";
 import CorsUrl from "../lib/corsUrl";
 import ParticleBackground from "../components/particleBackground";
+import { motion } from "framer-motion";
 
 function Forum() {
   const [searchValue, setSearchValue] = useState("");
@@ -60,7 +60,13 @@ function Forum() {
           />
 
           <div className={styles.postContainer}>
-            <div className={styles.addPost}>
+            <motion.div
+              className={styles.addPost}
+              animate={{
+                scale: [0.4, 1],
+                transition: { duration: 0.3 },
+              }}
+            >
               <Button
                 color="primary"
                 variant="contained"
@@ -74,7 +80,7 @@ function Forum() {
                 isAddPostClicked={isAddPostClicked}
                 mutate={mutate}
               />
-            </div>
+            </motion.div>
             {!data && <CircularProgress color="primary" />}
 
             {data

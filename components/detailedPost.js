@@ -62,7 +62,7 @@ export default function detailedPost(props) {
               avatar={
                 <Avatar
                   aria-label="recipe"
-                  style={{ backgroundColor: "#ff2e63" }}
+                  style={{ backgroundColor: "#00ADB5", color: "#222831" }}
                 ></Avatar>
               }
               title={props.title}

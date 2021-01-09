@@ -6,6 +6,7 @@ import { ThemeProvider } from "@material-ui/core/styles";
 import { useState } from "react";
 import styles from "../styles/addPost.module.css";
 import CorsUrl from "../lib/corsUrl";
+import { motion } from "framer-motion";
 
 const AddPost = ({ setAddPostClicked, mutate }) => {
   const [title, setTitle] = useState("");
@@ -36,7 +37,13 @@ const AddPost = ({ setAddPostClicked, mutate }) => {
 
   return (
     <ThemeProvider theme={theme}>
-      <div className={styles.container}>
+      <motion.div
+        className={styles.container}
+        animate={{
+          scale: [0.5, 1],
+          transition: { duration: 0.25 },
+        }}
+      >
         <Typography variant="h4" color="primary">
           Adding New Post
         </Typography>
@@ -71,7 +78,7 @@ const AddPost = ({ setAddPostClicked, mutate }) => {
         >
           Add
         </Button>
-      </div>
+      </motion.div>
     </ThemeProvider>
   );
 };

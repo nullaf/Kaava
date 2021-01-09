@@ -1,12 +1,10 @@
-import styles from "../styles/Forum.module.css";
-import Typography from "@material-ui/core/Typography";
 import DetailedPost from "./detailedPost";
 import React from "react";
-import CommentComponent from "./commentComponent";
 import useSWR from "swr";
 import fetcher from "../lib/fetch";
 import { CircularProgress } from "@material-ui/core";
 import CorsUrl from "../lib/corsUrl";
+import { motion } from "framer-motion";
 
 const DetailedPostComponent = (props) => {
   const { data, error } = useSWR(
@@ -15,10 +13,19 @@ const DetailedPostComponent = (props) => {
   );
 
   return (
-    <div>
+    <motion.div>
       {!data && <CircularProgress color="primary" />}
       {data && (
-        <div key={data.id}>
+        <motion.div
+          key={data.id}
+          whileTap={{ scale: 0.97 }}
+          whileHover={{ scale: 0.99 }}
+          animate={{
+            scale: [0.5, 1],
+            rotate: [10, 0],
+            transition: { duration: 0.3 },
+          }}
+        >
           <DetailedPost
             key={data.id}
             title={data.postName}
@@ -26,9 +33,9 @@ const DetailedPostComponent = (props) => {
             likeCount={data.postLike}
             date={data.postTime}
           />
-        </div>
+        </motion.div>
       )}
-    </div>
+    </motion.div>
   );
 };
 export default DetailedPostComponent;

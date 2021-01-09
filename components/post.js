@@ -68,7 +68,7 @@ export default function Post(props) {
                 avatar={
                   <Avatar
                     aria-label="avatar"
-                    style={{ backgroundColor: "#ff2e63" }}
+                    style={{ backgroundColor: "#00ADB5", color: "#222831" }}
                   />
                 }
                 title={props.title}

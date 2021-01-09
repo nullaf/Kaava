@@ -1,8 +1,9 @@
 import styles from "../styles/Comment.module.css";
 import { TextField } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
-import { useState } from "react";
+import React, { useState } from "react";
 import CorsUrl from "../lib/corsUrl";
+import { motion } from "framer-motion";
 
 export default function Addcomment({ mutate, id }) {
   const [comment, setComment] = useState("");
@@ -28,7 +29,16 @@ export default function Addcomment({ mutate, id }) {
     });
   };
   return (
-    <div className={styles.addComment}>
+    <motion.div
+      className={styles.addComment}
+      whileTap={{ scale: 0.97 }}
+      whileHover={{ scale: 0.99 }}
+      animate={{
+        scale: [0.5, 1],
+        rotate: [10, 0],
+        transition: { duration: 0.3 },
+      }}
+    >
       <div className={styles.addCommentTextfield}>
         <TextField
           value={comment}
@@ -47,6 +57,6 @@ export default function Addcomment({ mutate, id }) {
       >
         Add
       </Button>
-    </div>
+    </motion.div>
   );
 }
