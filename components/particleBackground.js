@@ -5,7 +5,7 @@ const ParticleBackground = () => {
       params={{
         particles: {
           number: {
-            value: 90,
+            value: 100,
             density: {
               enable: true,
               value_area: 1500,
@@ -13,20 +13,20 @@ const ParticleBackground = () => {
           },
           line_linked: {
             enable: true,
-            opacity: 0.09,
+            opacity: 0.12,
           },
           move: {
             random: true,
-            speed: 0.2,
+            speed: 0.5,
           },
           size: {
-            value: 1.25,
+            value: 1.5,
           },
           opacity: {
             anim: {
               enable: true,
               speed: 1,
-              opacity_min: 0.18,
+              opacity_min: 0.24,
             },
           },
         },
