@@ -45,8 +45,8 @@ const Map = () => {
         <title>Map</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Mapnav />
       <div className={styles.container}>
+        <Mapnav />
         <MapComponent />
       </div>
     </div>

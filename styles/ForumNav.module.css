@@ -10,7 +10,6 @@
   flex-direction: row;
   align-items: center;
   position: sticky;
-  border-bottom: 1px solid #eee;
   flex-wrap: nowrap;
   min-height: 80px;
   justify-content: space-between;
