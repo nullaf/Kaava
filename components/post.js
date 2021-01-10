@@ -55,7 +55,7 @@ export default function Post(props) {
       >
         <motion.div
           whileTap={{ scale: 0.97 }}
-          whileHover={{ scale: 0.99 }}
+          whileHover={{ scale: 1.026 }}
           animate={{
             scale: [0.5, 1],
             rotate: [10, 0],
