@@ -1,15 +1,7 @@
 import styles from "../styles/ForumNav.module.css";
-import { createMuiTheme } from "@material-ui/core/styles";
+import theme from "./muiThemes/postMuiTheme";
 import { ThemeProvider } from "@material-ui/styles";
 import Link from "next/link";
-
-const theme = createMuiTheme({
-  palette: {
-    primary: {
-      main: "#00adb5",
-    },
-  },
-});
 
 function Mapnav() {
   return (
