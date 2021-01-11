@@ -10,8 +10,8 @@ import { NoSsr } from "@material-ui/core";
 
 function Forumnav(props) {
   return (
-    <ThemeProvider theme={theme}>
-      <NoSsr>
+    <NoSsr>
+      <ThemeProvider theme={theme}>
         <div className={styles.background}>
           <Link href="/">
             <div className={styles.logo}>
@@ -59,8 +59,8 @@ function Forumnav(props) {
             </Button>
           </div>
         </div>
-      </NoSsr>
-    </ThemeProvider>
+      </ThemeProvider>
+    </NoSsr>
   );
 }
 
