@@ -30,8 +30,10 @@ const CanPopup = ({ can }) => {
       <Marker
         position={[can.longitude, can.latitude]}
         icon={
-          new Date().getTime() - new Date(can.fillingTime).getTime() >
-          604800000 /*1 week*/
+          clickState
+            ? iconCan
+            : new Date().getTime() - new Date(can.fillingTime).getTime() >
+              604800000 /*1 week*/
             ? iconEmptyCan
             : iconCan
         }
