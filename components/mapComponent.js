@@ -20,6 +20,7 @@ import Typography from "@material-ui/core/Typography";
 import TimeAgo from "react-timeago";
 import Button from "@material-ui/core/Button";
 import { ThemeProvider } from "@material-ui/core/styles";
+import CorsUrl from "../lib/corsUrl";
 
 const MapComponent = ({ addingState }) => {
   const [isFirstLoad, setIsFirstLoad] = useState(true);
@@ -63,19 +64,43 @@ const MapComponent = ({ addingState }) => {
     }
     return null;
   };
-
+  const [newCans, setNewCans] = useState([]);
+  const addCan = (e) => {
+    const { lng, lat } = e.latlng;
+    const curDate = new Date();
+    setNewCans([...newCans, [lat, lng, curDate]]);
+    const requestOptions = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        longitude: lat,
+        latitude: lng,
+        fillingTime: curDate,
+      }),
+    };
+    fetch(
+      CorsUrl + "https://kaavabackend.herokuapp.com/mamaKaplari",
+      requestOptions
+    ).then((response) => {
+      response.json();
+    });
+  };
   const AddCanOnClick = () => {
     const [pos, setPos] = useState(null);
-
     if (addingState) {
       const map = useMapEvents({
         click(e) {
           setPos(e.latlng);
           map.flyTo(e.latlng);
+          if (window.confirm("Are you sure you want to add can here?")) {
+            addCan(e);
+          } else {
+            setPos(null);
+          }
         },
       });
     }
-    return pos && <Marker position={pos} icon={iconAddCan} />;
+    return null;
   };
 
   return (
@@ -103,7 +128,7 @@ const MapComponent = ({ addingState }) => {
                 position={[can.longitude, can.latitude]}
                 icon={
                   new Date().getTime() - new Date(can.fillingTime).getTime() >
-                  604800
+                  604800000 /*1 week*/
                     ? iconEmptyCan
                     : iconCan
                 }
@@ -132,6 +157,15 @@ const MapComponent = ({ addingState }) => {
                   </Popup>
                 </div>
               </Marker>
+            </div>
+          </ThemeProvider>
+        );
+      })}
+      {newCans?.map((can, i) => {
+        return (
+          <ThemeProvider theme={theme} key={i}>
+            <div>
+              <Marker position={[can[0], can[1]]} icon={iconAddCan} />
             </div>
           </ThemeProvider>
         );
