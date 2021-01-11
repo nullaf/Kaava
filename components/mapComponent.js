@@ -15,6 +15,7 @@ import corsUrl from "../lib/corsUrl";
 import theme from "./muiThemes/postMuiTheme";
 import { iconCan } from "../lib/iconCan";
 import { iconAddCan } from "../lib/iconAddCan";
+import { iconEmptyCan } from "../lib/iconEmptyCan";
 import Typography from "@material-ui/core/Typography";
 import TimeAgo from "react-timeago";
 import Button from "@material-ui/core/Button";
@@ -98,7 +99,15 @@ const MapComponent = ({ addingState }) => {
         return (
           <ThemeProvider theme={theme} key={can.id}>
             <div>
-              <Marker position={[can.longitude, can.latitude]} icon={iconCan}>
+              <Marker
+                position={[can.longitude, can.latitude]}
+                icon={
+                  new Date().getTime() - new Date(can.fillingTime).getTime() >
+                  604800
+                    ? iconEmptyCan
+                    : iconCan
+                }
+              >
                 <div>
                   <Popup maxWidth="60vw" maxHeight="35vh">
                     <div
