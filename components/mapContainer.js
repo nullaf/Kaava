@@ -1,16 +1,16 @@
 import React from "react";
 import dynamic from "next/dynamic";
 
-const MapContainer = () => {
+const MapContainer = ({ addingState }) => {
   const FullMap = React.useMemo(
     () =>
-      dynamic(() => import("/mapComponent"), {
+      dynamic(() => import("./mapComponent"), {
         loading: () => <p>A map is loading</p>,
         ssr: false,
       }),
     []
   );
-  return <FullMap />;
+  return <FullMap addingState={addingState} />;
 };
 
 export default MapContainer;

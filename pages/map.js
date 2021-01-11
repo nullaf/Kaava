@@ -1,19 +1,12 @@
 import styles from "../styles/Map.module.css";
 import Mapnav from "../components/mapnav";
 import Head from "next/head";
-import { useMemo } from "react";
-import dynamic from "next/dynamic";
+import { useState } from "react";
 import "../node_modules/leaflet-geosearch/dist/geosearch.css";
+import MapContainer from "../components/mapContainer";
 
 const Map = () => {
-  const MapComponent = useMemo(
-    () =>
-      dynamic(() => import("../components/mapComponent"), {
-        loading: () => <p>A map is loading</p>,
-        ssr: false,
-      }),
-    []
-  );
+  const [addingState, setAddingState] = useState(false);
 
   return (
     <div>
@@ -46,8 +39,8 @@ const Map = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className={styles.container}>
-        <Mapnav />
-        <MapComponent />
+        <Mapnav setAddingState={setAddingState} addingState={addingState} />
+        <MapContainer addingState={addingState} />
       </div>
     </div>
   );
