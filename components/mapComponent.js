@@ -21,6 +21,7 @@ import TimeAgo from "react-timeago";
 import Button from "@material-ui/core/Button";
 import { ThemeProvider } from "@material-ui/core/styles";
 import CorsUrl from "../lib/corsUrl";
+import CanPopup from "./canPopup";
 
 const MapComponent = ({ addingState }) => {
   const [isFirstLoad, setIsFirstLoad] = useState(true);
@@ -123,39 +124,7 @@ const MapComponent = ({ addingState }) => {
         return (
           <ThemeProvider theme={theme} key={can.id}>
             <div>
-              <Marker
-                position={[can.longitude, can.latitude]}
-                icon={
-                  new Date().getTime() - new Date(can.fillingTime).getTime() >
-                  604800000 /*1 week*/
-                    ? iconEmptyCan
-                    : iconCan
-                }
-              >
-                <div>
-                  <Popup maxWidth="60vw" maxHeight="35vh">
-                    <div
-                      style={{
-                        textAlign: "center",
-                        display: "flex",
-                        justifyContent: "space-between",
-                        flexDirection: "column",
-                        width: 200,
-                        height: 200,
-                      }}
-                    >
-                      <Typography variant="h6">Animal Food Can</Typography>
-                      <Typography variant="body2">
-                        Last Filled: {<TimeAgo date={can.fillingTime} />}
-                      </Typography>
-
-                      <Button color="primary" variant="contained">
-                        Change
-                      </Button>
-                    </div>
-                  </Popup>
-                </div>
-              </Marker>
+              <CanPopup can={can} />
             </div>
           </ThemeProvider>
         );
