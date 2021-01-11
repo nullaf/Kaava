@@ -91,7 +91,6 @@ const MapComponent = ({ addingState }) => {
       const map = useMapEvents({
         click(e) {
           setPos(e.latlng);
-          map.flyTo(e.latlng);
           if (window.confirm("Are you sure you want to add can here?")) {
             addCan(e);
           } else {
