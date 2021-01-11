@@ -1,9 +1,11 @@
-import styles from "../styles/ForumNav.module.css";
+import styles from "../styles/MapNav.module.css";
 import theme from "./muiThemes/postMuiTheme";
 import { ThemeProvider } from "@material-ui/styles";
 import Link from "next/link";
 import Button from "@material-ui/core/Button";
 import { NoSsr } from "@material-ui/core";
+import Typography from "@material-ui/core/Typography";
+import { motion } from "framer-motion";
 
 function Mapnav({ addingState, setAddingState }) {
   return (
@@ -11,20 +13,50 @@ function Mapnav({ addingState, setAddingState }) {
       <ThemeProvider theme={theme}>
         <div className={styles.background}>
           <Link href="/">
-            <div className={styles.logo}>
+            <motion.div
+              className={styles.logo}
+              animate={{
+                rotate: [8, 0],
+                transition: { duration: 0.35 },
+              }}
+            >
               <img src="./svgs/icon.svg" />
-            </div>
+            </motion.div>
           </Link>
-          <Button
-            color="primary"
-            variant="contained"
-            size="large"
-            onClick={() => {
-              setAddingState(!addingState);
+
+          <div className={styles.helperText}>
+            {addingState && (
+              <motion.div
+                animate={{
+                  scale: [0.4, 1],
+                  transition: { duration: 0.3 },
+                }}
+              >
+                <Typography variant="h6" style={{ color: "#eee" }}>
+                  Click where you want to add can
+                </Typography>
+              </motion.div>
+            )}
+          </div>
+
+          <motion.div
+            animate={{
+              scale: [0.4, 1],
+              transition: { duration: 0.3 },
             }}
           >
-            Toggle
-          </Button>
+            <Button
+              styles={styles.button}
+              color="primary"
+              variant="contained"
+              size="large"
+              onClick={() => {
+                setAddingState(!addingState);
+              }}
+            >
+              {addingState ? "Stop Adding" : "Add Cans"}
+            </Button>
+          </motion.div>
         </div>
       </ThemeProvider>
     </NoSsr>
