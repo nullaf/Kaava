@@ -7,6 +7,7 @@ import Link from "next/link";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import theme from "./muiThemes/postMuiTheme";
 import { NoSsr } from "@material-ui/core";
+import { motion } from "framer-motion";
 
 function Forumnav(props) {
   return (
@@ -14,11 +15,23 @@ function Forumnav(props) {
       <ThemeProvider theme={theme}>
         <div className={styles.background}>
           <Link href="/">
-            <div className={styles.logo}>
+            <motion.div
+              className={styles.logo}
+              animate={{
+                rotate: [8, 0],
+                transition: { duration: 0.35 },
+              }}
+            >
               <img src="/svgs/icon.svg" />
-            </div>
+            </motion.div>
           </Link>
-          <div className={styles.search}>
+          <motion.div
+            className={styles.search}
+            animate={{
+              scale: [0.4, 1],
+              transition: { duration: 0.3 },
+            }}
+          >
             <TextField
               fullWidth
               value={props.searchValue}
@@ -34,8 +47,14 @@ function Forumnav(props) {
                 ),
               }}
             />
-          </div>
-          <div className={styles.buttons}>
+          </motion.div>
+          <motion.div
+            className={styles.buttons}
+            animate={{
+              scale: [0.4, 1],
+              transition: { duration: 0.3 },
+            }}
+          >
             <Button
               variant="outlined"
               size="large"
@@ -57,7 +76,7 @@ function Forumnav(props) {
             >
               Sign Up
             </Button>
-          </div>
+          </motion.div>
         </div>
       </ThemeProvider>
     </NoSsr>
