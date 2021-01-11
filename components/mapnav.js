@@ -6,6 +6,8 @@ import Button from "@material-ui/core/Button";
 import { NoSsr } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 import { motion } from "framer-motion";
+import AddBoxIcon from "@material-ui/icons/AddBox";
+import AddBoxOutlinedIcon from "@material-ui/icons/AddBoxOutlined";
 
 function Mapnav({ addingState, setAddingState }) {
   return (
@@ -49,6 +51,7 @@ function Mapnav({ addingState, setAddingState }) {
               styles={styles.button}
               color="primary"
               variant="contained"
+              startIcon={addingState ? <AddBoxIcon /> : <AddBoxOutlinedIcon />}
               size="large"
               onClick={() => {
                 setAddingState(!addingState);
