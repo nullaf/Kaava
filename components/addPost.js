@@ -13,26 +13,28 @@ const AddPost = ({ setAddPostClicked, mutate }) => {
   const [content, setContent] = useState("");
 
   const addClicked = () => {
-    setAddPostClicked(false);
+    if (content != "" && title != "") {
+      setAddPostClicked(false);
 
-    const requestOptions = {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        postName: String(title),
-        name: "Guest",
-        postDescription: String(content),
-        postLike: 0,
-        postTime: new Date(),
-      }),
-    };
-    fetch(
-      CorsUrl + "https://kaavabackend.herokuapp.com/posts",
-      requestOptions
-    ).then((response) => {
-      response.json();
-      mutate();
-    });
+      const requestOptions = {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          postName: String(title),
+          name: "Guest",
+          postDescription: String(content),
+          postLike: 0,
+          postTime: new Date(),
+        }),
+      };
+      fetch(
+        CorsUrl + "https://kaavabackend.herokuapp.com/posts",
+        requestOptions
+      ).then((response) => {
+        response.json();
+        mutate();
+      });
+    }
   };
 
   return (
