@@ -16,6 +16,7 @@ import theme from "./muiThemes/postMuiTheme";
 import { ThemeProvider } from "@material-ui/core/styles";
 import CorsUrl from "../lib/corsUrl";
 import CanPopup from "./canPopup";
+import { iconAddCan } from "../lib/iconAddCan";
 
 const MapComponent = ({ addingState }) => {
   const [isFirstLoad, setIsFirstLoad] = useState(true);
