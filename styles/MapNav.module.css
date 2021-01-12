@@ -32,13 +32,13 @@
 
 @media (max-width: 800px) {
     .logo {
-        width: 15vw;
+        width: 18vw;
     }
     .helperText {
         width: 58vw;
     }
     .button {
-        width: 25vw;
+        width: 24vw;
     }
 
 }

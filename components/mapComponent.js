@@ -25,8 +25,9 @@ const MapComponent = ({ addingState }) => {
     fetcher
   );
 
-  const SearchField = () => {
+  const AdditionalControls = () => {
     const map = useMap();
+
     const search = new GeoSearchControl({
       style: "bar",
       provider: new OpenStreetMapProvider(),
@@ -34,15 +35,7 @@ const MapComponent = ({ addingState }) => {
       zoomLevel: 15,
       autoClose: true,
     });
-    if (isFirstLoad) {
-      map.addControl(search);
-      setIsFirstLoad(false);
-    }
 
-    return null;
-  };
-  const MapLocate = () => {
-    const map = useMap();
     const locateOptions = {
       position: "topleft",
       strings: {
@@ -57,9 +50,14 @@ const MapComponent = ({ addingState }) => {
     if (isFirstLoad) {
       const lc = new Locate(locateOptions);
       lc.addTo(map);
+      map.addControl(search);
     }
+
+    setIsFirstLoad(false);
+
     return null;
   };
+
   const [newCans, setNewCans] = useState([]);
   const addCan = (e) => {
     const { lng, lat } = e.latlng;
@@ -112,8 +110,7 @@ const MapComponent = ({ addingState }) => {
       />
 
       <AddCanOnClick />
-      <MapLocate />
-      <SearchField />
+      <AdditionalControls />
 
       {data?.map((can) => {
         return (

@@ -8,6 +8,7 @@ import { iconCan } from "../lib/iconCan";
 import DeleteIcon from "@material-ui/icons/Delete";
 import PetsIcon from "@material-ui/icons/Pets";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
+import CorsUrl from "../lib/corsUrl";
 
 const CanPopup = ({ can }) => {
   const theme = createMuiTheme({
@@ -24,6 +25,36 @@ const CanPopup = ({ can }) => {
 
   const [clickState, setClickState] = useState(false);
   const [deleteState, setDeleteState] = useState(false);
+
+  const deleteCan = () => {
+    const requestOptions = {
+      method: "DELETE",
+    };
+    fetch(
+      CorsUrl + `https://kaavabackend.herokuapp.com/mamaKaplari/${can.id}`,
+      requestOptions
+    ).then((response) => {
+      response.json();
+    });
+  };
+  const fillCan = () => {
+    const requestOptions = {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        id: can.id,
+        longitude: can.longitude,
+        latitude: can.latitude,
+        fillingTime: new Date(),
+      }),
+    };
+    fetch(
+      CorsUrl + `https://kaavabackend.herokuapp.com/mamaKaplari/${can.id}`,
+      requestOptions
+    ).then((response) => {
+      response.json();
+    });
+  };
 
   return deleteState ? null : (
     <ThemeProvider theme={theme}>
@@ -59,9 +90,10 @@ const CanPopup = ({ can }) => {
               <Button
                 color="primary"
                 variant="contained"
-                startIcon={<PetsIcon color="default" />}
+                startIcon={<PetsIcon />}
                 onClick={() => {
                   setClickState(true);
+                  fillCan();
                 }}
               >
                 Fill
@@ -74,6 +106,7 @@ const CanPopup = ({ can }) => {
                   if (
                     window.confirm("Are you sure you want to delete this can?")
                   ) {
+                    deleteCan();
                     setDeleteState(true);
                   }
                 }}
